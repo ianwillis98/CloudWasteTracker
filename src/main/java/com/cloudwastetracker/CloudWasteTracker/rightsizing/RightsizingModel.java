@@ -22,6 +22,10 @@ public class RightsizingModel {
         public double totalSpend;
         public double idle;
         public double cpuCapacity;
+        public double memoryCapacity;
+        public double networkCapacity;
+        public double hoursRunning;
+        public double cpuMax;
 
     }
 }
