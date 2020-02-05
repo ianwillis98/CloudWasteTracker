@@ -12,7 +12,7 @@ public class Vendor implements Serializable {
 	private String key;
 
 	private String label;
-
+	
 	private String description;
 
 	public Vendor() {
