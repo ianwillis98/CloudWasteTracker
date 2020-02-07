@@ -11,28 +11,24 @@ public class RightsizingModel {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class ResourceStatistics {
-
-        public String service;
-        public String name;
+    	public int id;
         public String resourceIdentifier;
         public String vendorAccountId;
-
-        public String nodeType;
-        public double unitPrice;
         public double totalSpend;
-        public double idle;
-        public double cpuCapacity;
-        public double memoryCapacity;
-        public double networkCapacity;
-        public double hoursRunning;
-        public double cpuMax;
+        public String nodeType;
+        public int localCapacity;
+        public int localDrives;
+        public int cpuCapacity;
+        public int memoryCapacity;
+        public int cpuMax;
+        public int memoryMax;
 
         public List<Recommendations> recommendations;
 
         @JsonIgnoreProperties(ignoreUnknown = true)
         public static class Recommendations {
 
-            public String nodeType;
+            public double savings;
         }
     }
 }
