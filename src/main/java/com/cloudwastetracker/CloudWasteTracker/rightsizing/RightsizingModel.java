@@ -27,5 +27,12 @@ public class RightsizingModel {
         public double hoursRunning;
         public double cpuMax;
 
+        public List<Recommendations> recommendations;
+
+        @JsonIgnoreProperties(ignoreUnknown = true)
+        public static class Recommendations {
+
+            public String nodeType;
+        }
     }
 }
