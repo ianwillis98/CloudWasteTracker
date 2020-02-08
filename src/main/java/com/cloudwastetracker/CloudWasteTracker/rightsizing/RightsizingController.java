@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class RightsizingController {
-
     private CloudabilityClient cloudabilityClient;
 
     public RightsizingController(CloudabilityClient cloudabilityClient) {

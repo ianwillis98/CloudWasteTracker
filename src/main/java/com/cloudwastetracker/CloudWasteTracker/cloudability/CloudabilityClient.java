@@ -1,6 +1,6 @@
 package com.cloudwastetracker.CloudWasteTracker.cloudability;
 
-import com.cloudwastetracker.CloudWasteTracker.rightsizing.Rightsizing;
+import com.cloudwastetracker.CloudWasteTracker.reports.Reports;
 import com.cloudwastetracker.CloudWasteTracker.rightsizing.RightsizingModel;
 import com.cloudwastetracker.CloudWasteTracker.vendor.VendorsModel;
 import org.springframework.boot.web.client.RestTemplateBuilder;
