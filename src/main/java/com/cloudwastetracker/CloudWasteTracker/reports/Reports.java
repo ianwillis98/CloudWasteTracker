@@ -1,6 +1,5 @@
 package com.cloudwastetracker.CloudWasteTracker.reports;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -8,36 +7,51 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-/*needs a rest controller and a table in db*/
+import javax.persistence.Table;
+
+@Table(name = "Reports")
 @Entity
-public class Reports implements Serializable{
+public class Reports {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private Integer id;
 	//add columns
 	//@Column(name = "")
+	@Column(name = "resource_id")
 	private String resourceIdentifier;
 	
+	@Column (name = "vendor_account_id")
 	private String vendorAccountId;
 
+	@Column (name = "timestamp")
 	private Timestamp time;
-
+	
+	@Column(name = "total_money_spent")
 	private double totalSpend;
 
+	@Column(name = "total_money_wasted")
 	private double totalWaste;
 
+	@Column(name = "server_type")
 	private String nodeType;
 
+	@Column(name = "local_capacity")
 	private double localCapacity;
 
+	@Column(name = "local_drives")
 	private double localDrives;
 
+	@Column(name = "cpu_capacity")
 	private double cpuCapacity;
-
+	
+	@Column(name = "memory_capacity")
 	private double memoryCapacity;
 
+	@Column(name = "cpu_max")
 	private double cpuMax;
 
+	@Column(name = "memory_max")
 	private double memoryMax;
 	
 	public Reports() {
