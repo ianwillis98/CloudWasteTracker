@@ -1,7 +1,7 @@
 package com.cloudwastetracker.CloudWasteTracker.Record;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface ReportsRepository extends CrudRepository<Reports, Integer>{
+public interface ReportsRepository extends PagingAndSortingRepository<Reports, Integer>{
 
 }
