@@ -7,7 +7,28 @@ import javax.persistence.Id;
 public class Resources {
 
     @Id
-    public String resourceId;
+    private String resourceId;
 
-    public String resourceName;
+    private String resourceName;
+
+    public Resources() {
+
+    }
+
+    public String getResourceId() {
+        return resourceId;
+    }
+
+    public void setResourceId(String resourceId) {
+        this.resourceId = resourceId;
+    }
+
+    public String getResourceName() {
+        return resourceName;
+    }
+
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
+    }
+
 }
