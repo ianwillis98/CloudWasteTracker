@@ -25,14 +25,15 @@ public class RightsizingModel {
         public double memoryCapacity;
         public double networkCapacity;
         public double hoursRunning;
-        public double cpuMax;
+        public double localCapacity;
+        public double localDrives;
 
         public List<Recommendations> recommendations;
 
         @JsonIgnoreProperties(ignoreUnknown = true)
         public static class Recommendations {
 
-            public String nodeType;
+            public double savings;
         }
     }
 }
