@@ -14,13 +14,13 @@ public class Runner implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		/*
+		
+		//https://www.baeldung.com/spring-data-jpa-pagination-sorting for sorting by timestamp
+		
 		Reports repo = new Reports();
-		repo.setName("Tim");
 		repo.setTime_stamp(new Timestamp(new Date().getTime()));
-		repo.setMoney(19.99);
 		temp.save(repo);
-		*/
+		
 	}
 
 }

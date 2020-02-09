@@ -1,8 +1,10 @@
 package com.cloudwastetracker.CloudWasteTracker.vendor;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface VendorsRepository extends PagingAndSortingRepository<Vendor, String>{
+import com.cloudwastetracker.CloudWasteTracker.Record.Reports;
 
-	Vendor findByKey(String key);
+public interface VendorsRepository extends CrudRepository<Reports, Integer>{
+
 }
