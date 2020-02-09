@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.annotation.Generated;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,7 @@ public class Reports implements Serializable {
 	@Id
 	private int id;
 	
+	@Column(name = "time")
 	private Timestamp time_stamp;
 	
 	private double money_spent;
@@ -29,11 +31,8 @@ public class Reports implements Serializable {
 	
 	private double cpu_capacity;
 	
-	private double memory_capacoty;
-	
-	private double cpu_max;
-	
-	private double memory_max;
+	private double memory_capacity;
+
 	
 	public Reports() {
 		
@@ -95,30 +94,11 @@ public class Reports implements Serializable {
 		this.cpu_capacity = cpu_capacity;
 	}
 
-	public double getMemory_capacoty() {
-		return memory_capacoty;
+	public double getMemory_capacity() {
+		return memory_capacity;
 	}
 
-	public void setMemory_capacoty(double memory_capacoty) {
-		this.memory_capacoty = memory_capacoty;
+	public void setMemory_capacity(double memory_capacity) {
+		this.memory_capacity = memory_capacity;
 	}
-
-	public double getCpu_max() {
-		return cpu_max;
-	}
-
-	public void setCpu_max(double cpu_max) {
-		this.cpu_max = cpu_max;
-	}
-
-	public double getMemory_max() {
-		return memory_max;
-	}
-
-	public void setMemory_max(double memory_max) {
-		this.memory_max = memory_max;
-	}
-	
-	
-
 }
