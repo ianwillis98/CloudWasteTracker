@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class CloudabilityClient {
 
-    private static final String CLOUDABILITY_RIGHTSIZING_URL = "https://api.cloudability.com/v3/rightsizing/aws/recommendations/ec2?filters=resourceIdentifier=={resourceIdentifier}";
+    private static final String CLOUDABILITY_RIGHTSIZING_URL = "https://api.cloudability.com/v3/rightsizing/aws/recommendations/ec2?filters=resourceIdentifier=={resourceIdentifier}&rank=default&maxRecsPerResource=1";
     private static final String CLOUDABILITY_VENDORS_URL = "https://api.cloudability.com/v3/vendors";
 
     private String cloudabilityApiKey;
