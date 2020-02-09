@@ -14,11 +14,12 @@ public class Runner implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		/*
 		Reports repo = new Reports();
 		repo.setName("Tim");
 		repo.setTime_stamp(new Timestamp(new Date().getTime()));
 		repo.setMoney(19.99);
-		temp.save(repo);
+		temp.save(repo);*/
 	}
 
 }
