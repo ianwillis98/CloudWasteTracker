@@ -5,6 +5,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.cloudwastetracker.CloudWasteTracker.Record.Reports;
 
-public interface VendorsRepository extends CrudRepository<Reports, Integer>{
+public interface VendorsRepository extends CrudRepository<Vendors, Integer>{
 
 }
