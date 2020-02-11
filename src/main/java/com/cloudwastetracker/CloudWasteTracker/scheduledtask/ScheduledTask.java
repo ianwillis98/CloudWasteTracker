@@ -1,29 +1,20 @@
-package com.cloudwastetracker.CloudWasteTracker.Record;
-
-import java.sql.Timestamp;
-import java.util.Date;
+package com.cloudwastetracker.CloudWasteTracker.scheduledtask;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.data.domain.Sort;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.cloudwastetracker.CloudWasteTracker.cloudability.CloudabilityClient;
-import com.cloudwastetracker.CloudWasteTracker.rightsizing.RightsizingModel;
-
+import com.cloudwastetracker.CloudWasteTracker.Record.SaveDataToDB;
 @Component
-public class Runner implements CommandLineRunner{
+public class ScheduledTask {
 	@Autowired
-	ReportsRepository temp;
-
-	@Autowired
-	CloudabilityClient c;
-	
-	@Override
-	public void run(String... args) throws Exception {
+	SaveDataToDB task;
+	// 12 hours converted to milliseconds
+	@Scheduled(fixedRate = 12 * 60 * 60 * 1000)
+	public void saveDataToDB() {
 		
 		//https://www.baeldung.com/spring-data-jpa-pagination-sorting for sorting by timestamp
-		
+		/*
 		Reports repo = new Reports();
 		RightsizingModel model = c.fetchRightsizing("i-003f7b7543aae4f52").getBody();
 		repo.setMoney_spent(model.result.get(0).totalSpend);
@@ -35,6 +26,9 @@ public class Runner implements CommandLineRunner{
 		repo.setCpu_capacity(model.result.get(0).cpuCapacity);
 		repo.setMemory_capacity(model.result.get(0).memoryCapacity);
 		temp.save(repo);
+		*/
+		task.SaveData();
+		//System.out.println("Saved");
 		
 	}
 
