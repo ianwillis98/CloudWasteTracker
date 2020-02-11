@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cloudwastetracker.CloudWasteTracker.cloudability.CloudabilityClient;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class VendorsController {
 
 	private final VendorsRepository vendorsRepository;
@@ -24,13 +25,11 @@ public class VendorsController {
 	}
 	
 	@GetMapping("/vendors")
-	@ResponseBody
-	public VendorsModel fetchVendors() {		
+	public VendorsModel fetchVendors() {
 		return this.cloudabilityClient.fetchVendors().getBody();
 	}
 
 	@GetMapping("/rds")
-	@ResponseBody
 	public String fetchName() {
 		return this.rds.getFirstName();
 	}
