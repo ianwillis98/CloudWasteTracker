@@ -9,6 +9,7 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+	<packaging>jar</packaging>
 	<groupId>com.cloudwastetracker</groupId>
 	<artifactId>CloudWasteTracker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
