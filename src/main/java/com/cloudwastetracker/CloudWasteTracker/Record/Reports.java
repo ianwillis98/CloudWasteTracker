@@ -32,6 +32,8 @@ public class Reports implements Serializable {
 	private double cpu_capacity;
 	
 	private double memory_capacity;
+	
+	private String resource_id;
 
 	
 	public Reports() {
@@ -100,5 +102,13 @@ public class Reports implements Serializable {
 
 	public void setMemory_capacity(double memory_capacity) {
 		this.memory_capacity = memory_capacity;
+	}
+
+	public String getResource_id() {
+		return resource_id;
+	}
+
+	public void setResource_id(String resource_id) {
+		this.resource_id = resource_id;
 	}
 }
