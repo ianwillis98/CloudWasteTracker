@@ -1,5 +1,6 @@
 package com.cloudwastetracker.CloudWasteTracker.cloudability;
 
+import com.cloudwastetracker.CloudWasteTracker.measures.MeasuresModel;
 import com.cloudwastetracker.CloudWasteTracker.rightsizing.Rightsizing;
 import com.cloudwastetracker.CloudWasteTracker.rightsizing.RightsizingModel;
 import com.cloudwastetracker.CloudWasteTracker.vendor.VendorsModel;
@@ -17,12 +18,14 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 @Component
 public class CloudabilityClient {
 
     private static final String CLOUDABILITY_RIGHTSIZING_URL = "https://api.cloudability.com/v3/rightsizing/aws/recommendations/ec2?filters=resourceIdentifier=={resourceIdentifier}&rank=default&maxRecsPerResource=1";
     private static final String CLOUDABILITY_VENDORS_URL = "https://api.cloudability.com/v3/vendors";
+    private static final String CLOUDABILITY_MEASURES_URL = "https://app.cloudability.com/api/1/reporting/cost/measures";
 
     private String cloudabilityApiKey;
     private String cloudabilityPassword;
@@ -44,6 +47,10 @@ public class CloudabilityClient {
 
     public ResponseEntity<String> fetchRightsizingString(String resourceIdentifier) {
         return this.restTemplete.getForEntity(CLOUDABILITY_RIGHTSIZING_URL, String.class, resourceIdentifier);
+    }
+
+    public ResponseEntity<MeasuresModel[]> fetchMeasures() {
+        return this.restTemplete.getForEntity(CLOUDABILITY_MEASURES_URL, MeasuresModel[].class);
     }
 
     private static class CloudabilityTokenInterceptor implements ClientHttpRequestInterceptor {

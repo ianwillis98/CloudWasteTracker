@@ -18,7 +18,7 @@ public class RightsizingController {
 
     @GetMapping("/rightsizing/{resourceIdentifier}")
     @ResponseBody
-    public RightsizingModel fetchVendors(@PathVariable String resourceIdentifier) {
+    public RightsizingModel fetchRightsizing(@PathVariable String resourceIdentifier) {
         return this.cloudabilityClient.fetchRightsizing(resourceIdentifier).getBody();
     }
 }

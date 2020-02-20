@@ -13,7 +13,7 @@ public class ScheduledTask {
 	@Scheduled(fixedRate = 12 * 60 * 60 * 1000)
 	public void saveDataToDB() {
 		
-		task.saveDataAllMembers();
+		//task.saveDataAllMembers();
 		
 	}
 
