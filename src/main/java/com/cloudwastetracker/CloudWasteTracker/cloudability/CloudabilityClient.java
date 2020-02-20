@@ -70,7 +70,6 @@ public class CloudabilityClient {
                 byte[] basicAuthValue = token.getBytes(StandardCharsets.UTF_8);
                 request.getHeaders().set(HttpHeaders.AUTHORIZATION,
                         "Basic " + Base64Utils.encodeToString(basicAuthValue));
-                System.out.println("ian here " + email + " " + password);
             }
             return execution.execute(request, body);
         }
@@ -94,7 +93,6 @@ public class CloudabilityClient {
                 byte[] basicAuthValue = token.getBytes(StandardCharsets.UTF_8);
                 request.getHeaders().set(HttpHeaders.AUTHORIZATION,
                         "Basic " + Base64Utils.encodeToString(basicAuthValue));
-                System.out.println("ian here " + apiKey + " " + password);
             }
             return execution.execute(request, body);
         }
