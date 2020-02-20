@@ -8,5 +8,3 @@ public class MeasuresModel {
     public String label;
 
 }
-//CloudabilityApiKey=51cy6GqkrLLdsAHwJC2J
-//CloudabilityPassword=19970827gZj

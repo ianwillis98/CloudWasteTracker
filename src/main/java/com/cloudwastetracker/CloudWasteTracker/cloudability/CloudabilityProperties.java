@@ -1,26 +1,36 @@
 package com.cloudwastetracker.CloudWasteTracker.cloudability;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.ConstructorBinding;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
-@Configuration
-@PropertySource("classpath:secrets.properties")
+@ConfigurationProperties(prefix="cloudability")
 public class CloudabilityProperties {
 
-	@Value("${CloudabilityApiKey}")
 	private String apiKey;
-	@Value("${CloudabilityPassword}")
+	private String email;
 	private String password;
 
 	public String getApiKey() {
 		return apiKey;
 	}
 
+	public void setApiKey(String apiKey) {
+		this.apiKey = apiKey;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getPassword() {
 		return password;
 	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

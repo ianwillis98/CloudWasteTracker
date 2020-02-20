@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import com.cloudwastetracker.CloudWasteTracker.cloudability.CloudabilityProperties;
 
 @SpringBootApplication
+@EnableConfigurationProperties(CloudabilityProperties.class)
 @EnableScheduling
 public class CloudWasteTrackerApplication {
 
