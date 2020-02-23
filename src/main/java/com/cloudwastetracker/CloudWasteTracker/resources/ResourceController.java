@@ -8,16 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class ResourcesController {
+public class ResourceController {
 
-    private ResourcesRepository resourcesRepository;
+    private ResourceRepository resourcesRepository;
 
-    public ResourcesController(ResourcesRepository resourcesRepository) {
+    public ResourceController(ResourceRepository resourcesRepository) {
         this.resourcesRepository = resourcesRepository;
     }
 
     @GetMapping("/resources")
-    public Iterable<Resources> fetchResources() {
+    public Iterable<Resource> fetchResources() {
         return resourcesRepository.findAll();
     }
 

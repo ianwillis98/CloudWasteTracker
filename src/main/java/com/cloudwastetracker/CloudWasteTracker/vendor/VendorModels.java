@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class VendorsModel {
+public class VendorModels {
 
-	public List<VendorModel> result;
+	public List<VendorModels> result;
 
 	public static class VendorModel {
 
