@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Reports implements Serializable {
+public class Record implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private int id;
@@ -36,7 +36,7 @@ public class Reports implements Serializable {
 	private String resource_id;
 
 	
-	public Reports() {
+	public Record() {
 		
 	}
 

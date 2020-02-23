@@ -6,26 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cloudwastetracker.CloudWasteTracker.cloudability.CloudabilityClient;
-import com.cloudwastetracker.CloudWasteTracker.resources.Resources;
-import com.cloudwastetracker.CloudWasteTracker.resources.ResourcesRepository;
+import com.cloudwastetracker.CloudWasteTracker.resources.Resource;
+import com.cloudwastetracker.CloudWasteTracker.resources.ResourceRepository;
 import com.cloudwastetracker.CloudWasteTracker.rightsizing.RightsizingModel;
 
 @Component
 public class SaveDataToDB {
 	@Autowired
-	ReportsRepository temp;
+	RecordRepository temp;
 
 	@Autowired
 	CloudabilityClient c;
 	
 	@Autowired
-	ResourcesRepository r;
+	ResourceRepository r;
 	
 	public void saveData(String id){
 		
 		//https://www.baeldung.com/spring-data-jpa-pagination-sorting for sorting by timestamp
 		
-		Reports repo = new Reports();
+		Record repo = new Record();
 		RightsizingModel model = c.fetchRightsizing(id).getBody();
 		repo.setMoney_spent(model.result.get(0).totalSpend);
 		repo.setTime_stamp(new Timestamp(new Date().getTime()));
@@ -41,9 +41,9 @@ public class SaveDataToDB {
 	}
 	
 	public void saveDataAllMembers() {
-		Iterable<Resources> iter = r.findAll();
+		Iterable<Resource> iter = r.findAll();
 		
-		for (Resources ele: iter) {
+		for (Resource ele: iter) {
 			this.saveData(ele.getResourceId());
 		}
 	}

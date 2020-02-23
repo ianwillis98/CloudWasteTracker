@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Vendors implements Serializable {
+public class Vendor implements Serializable {
 
 	@Id
 	private String vendorKey;
@@ -15,7 +15,7 @@ public class Vendors implements Serializable {
 	
 	private String vendorDescription;
 
-	public Vendors() {
+	public Vendor() {
 
 	}
 
