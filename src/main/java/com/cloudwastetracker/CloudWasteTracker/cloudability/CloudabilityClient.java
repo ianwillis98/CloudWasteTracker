@@ -2,6 +2,7 @@ package com.cloudwastetracker.CloudWasteTracker.cloudability;
 
 import com.cloudwastetracker.CloudWasteTracker.measures.MeasuresModel;
 import com.cloudwastetracker.CloudWasteTracker.rightsizing.RightsizingModel;
+import com.cloudwastetracker.CloudWasteTracker.utilization.UtilizationReportModel;
 import com.cloudwastetracker.CloudWasteTracker.vendor.VendorsModel;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
@@ -22,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 public class CloudabilityClient {
 
     private static final String CLOUDABILITY_V1_MEASURES_URL = "https://app.cloudability.com/api/1/reporting/cost/measures";
+    private static final String CLOUDABILITY_V1_UTILIZATION_URL = "https://app.cloudability.com/api/1/reporting/run?end_date=yesterday+at+23%3A59%3A59&filters=utilization_hours>0,hour%3D%3D5,tag4!%3D7933,group_name5!%3DProduction,vendor_account_name!%3D%40cp01,product_name%3D%3DAmazon+Elastic+Compute+Cloud&metrics=utilization_hours,estimated_cost&order=desc&sort_by=estimated_cost&start_date=yesterday+at+00%3A00%3A00&dimensions=category5,vendor_account_name,product_name,instance_identifier,tag6,tag5,instance_size,category3,tag7,tag2";
 
     private static final String CLOUDABILITY_V3_RIGHTSIZING_URL = "https://api.cloudability.com/v3/rightsizing/aws/recommendations/ec2?filters=resourceIdentifier=={resourceIdentifier}&rank=default&maxRecsPerResource=1";
     private static final String CLOUDABILITY_V3_VENDORS_URL = "https://api.cloudability.com/v3/vendors";
@@ -38,6 +40,10 @@ public class CloudabilityClient {
 
     public ResponseEntity<MeasuresModel[]> fetchMeasures() {
         return this.restTemplateV1.getForEntity(CLOUDABILITY_V1_MEASURES_URL, MeasuresModel[].class);
+    }
+
+    public ResponseEntity<UtilizationReportModel> fetchUtilizationReport() {
+        return this.restTemplateV1.getForEntity(CLOUDABILITY_V1_UTILIZATION_URL, UtilizationReportModel.class);
     }
 
     public ResponseEntity<VendorsModel> fetchVendors() {
