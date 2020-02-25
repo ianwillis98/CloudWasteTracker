@@ -2,6 +2,6 @@ package com.cloudwastetracker.CloudWasteTracker.resources;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface ResourcesRepository extends CrudRepository<Resources, String> {
+public interface ResourceRepository extends CrudRepository<Resource, String> {
 
 }
