@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cloudwastetracker.CloudWasteTracker.cloudability.CloudabilityClient;
-import com.cloudwastetracker.CloudWasteTracker.resources.Resource;
-import com.cloudwastetracker.CloudWasteTracker.resources.ResourceRepository;
+import com.cloudwastetracker.CloudWasteTracker.resource.Resource;
+import com.cloudwastetracker.CloudWasteTracker.resource.ResourceRepository;
 
 import org.springframework.web.bind.annotation.RestController;
 
