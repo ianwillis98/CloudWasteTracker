@@ -15,13 +15,31 @@ public class ResourcesTest {
 
     @Autowired
     ResourcesRepository subject;
+    
+    @Test
+    public void testRepositorySetId() throws Exception {
+    	Resources r = new Resources();
+    	String id = "testid";
+    	r.setResourceId(id);
+    	assertEquals(id, r.getResourceId());
+    }
+    
+    @Test
+    public void testRepositorySetName() throws Exception {
+    	Resources r = new Resources();
+    	String name = "testname";
+    	r.setResourceName(name);
+    	assertEquals(name, r.getResourceName());
+    }
 
     @Test
     public void testRepositorySave() throws Exception {
         Resources r = new Resources();
-        r.setResourceId("testid");
+        String id = "testid";
+        r.setResourceId(id);
         r.setResourceName("testname");
         subject.save(r);
+        assertTrue(subject.findById(id).isPresent());
     }
 
     @Test
@@ -33,8 +51,8 @@ public class ResourcesTest {
 
         assertTrue(subject.findById("testid").isPresent());
         Resources r2 = subject.findById("testid").get();
-        assertEquals(r.getResourceId(), r2.getResourceId());
-        assertEquals(r.getResourceName(), r2.getResourceName());
+        assertEquals("testid", r2.getResourceId());
+        assertEquals("testname", r2.getResourceName());
     }
 
     @Test
