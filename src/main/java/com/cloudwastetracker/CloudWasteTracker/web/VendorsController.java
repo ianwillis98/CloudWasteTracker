@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class VendorsController {
 	
 	
-	@RequestMapping("vendors")
+	@RequestMapping("vendor")
 
 	public String vendors() {
 		return "vendors";
