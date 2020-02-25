@@ -1,4 +1,4 @@
-package com.cloudwastetracker.CloudWasteTracker.resources;
+package com.cloudwastetracker.CloudWasteTracker.resource;
 
 import org.springframework.data.repository.CrudRepository;
 

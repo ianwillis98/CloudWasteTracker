@@ -1,4 +1,4 @@
-package com.cloudwastetracker.CloudWasteTracker.Record;
+package com.cloudwastetracker.CloudWasteTracker.record;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 
