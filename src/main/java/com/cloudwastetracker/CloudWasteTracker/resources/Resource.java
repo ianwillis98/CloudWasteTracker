@@ -4,14 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Resources {
+public class Resource {
 
     @Id
     private String resourceId;
 
     private String resourceName;
 
-    public Resources() {
+    public Resource() {
 
     }
 

@@ -3,7 +3,7 @@ package com.cloudwastetracker.CloudWasteTracker.cloudability;
 import com.cloudwastetracker.CloudWasteTracker.measures.MeasuresModel;
 import com.cloudwastetracker.CloudWasteTracker.rightsizing.RightsizingModel;
 import com.cloudwastetracker.CloudWasteTracker.utilization.UtilizationReportModel;
-import com.cloudwastetracker.CloudWasteTracker.vendor.VendorsModel;
+import com.cloudwastetracker.CloudWasteTracker.vendor.VendorModels;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
@@ -46,8 +46,8 @@ public class CloudabilityClient {
         return this.restTemplateV1.getForEntity(CLOUDABILITY_V1_UTILIZATION_URL, UtilizationReportModel.class);
     }
 
-    public ResponseEntity<VendorsModel> fetchVendors() {
-        return this.restTemplateV3.getForEntity(CLOUDABILITY_V3_VENDORS_URL, VendorsModel.class);
+    public ResponseEntity<VendorModels> fetchVendors() {
+        return this.restTemplateV3.getForEntity(CLOUDABILITY_V3_VENDORS_URL, VendorModels.class);
     }
 
     public ResponseEntity<RightsizingModel> fetchRightsizing(String resourceIdentifier) {

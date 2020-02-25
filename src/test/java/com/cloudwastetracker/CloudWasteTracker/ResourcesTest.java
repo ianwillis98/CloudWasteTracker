@@ -1,7 +1,7 @@
 package com.cloudwastetracker.CloudWasteTracker;
 
-import com.cloudwastetracker.CloudWasteTracker.resources.Resources;
-import com.cloudwastetracker.CloudWasteTracker.resources.ResourcesRepository;
+import com.cloudwastetracker.CloudWasteTracker.resources.Resource;
+import com.cloudwastetracker.CloudWasteTracker.resources.ResourceRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +14,11 @@ import static org.junit.Assert.*;
 public class ResourcesTest {
 
     @Autowired
-    ResourcesRepository subject;
+    ResourceRepository subject;
 
     @Test
     public void testRepositorySave() throws Exception {
-        Resources r = new Resources();
+        Resource r = new Resource();
         r.setResourceId("testid");
         r.setResourceName("testname");
         subject.save(r);
@@ -26,20 +26,20 @@ public class ResourcesTest {
 
     @Test
     public void testRepositoryGet() throws Exception {
-        Resources r = new Resources();
+        Resource r = new Resource();
         r.setResourceId("testid");
         r.setResourceName("testname");
         subject.save(r);
 
         assertTrue(subject.findById("testid").isPresent());
-        Resources r2 = subject.findById("testid").get();
+        Resource r2 = subject.findById("testid").get();
         assertEquals(r.getResourceId(), r2.getResourceId());
         assertEquals(r.getResourceName(), r2.getResourceName());
     }
 
     @Test
     public void testRepositoryGetAll() throws Exception {
-        Resources r = new Resources();
+        Resource r = new Resource();
         r.setResourceId("testid");
         r.setResourceName("testname");
         subject.save(r);

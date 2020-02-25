@@ -7,25 +7,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cloudwastetracker.CloudWasteTracker.cloudability.CloudabilityClient;
-import com.cloudwastetracker.CloudWasteTracker.resources.Resources;
-import com.cloudwastetracker.CloudWasteTracker.resources.ResourcesRepository;
+import com.cloudwastetracker.CloudWasteTracker.resources.Resource;
+import com.cloudwastetracker.CloudWasteTracker.resources.ResourceRepository;
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class VendorsController {
+public class VendorController {
 
-	private VendorsRepository vendorsRepository;
+	private VendorRepository vendorsRepository;
 
 	@Autowired
 	private VendorsRds rds;
 
-	public VendorsController(VendorsRepository vendorsRepository) {
+	public VendorController(VendorRepository vendorsRepository) {
 		this.vendorsRepository = vendorsRepository;
 	}
 	
 	@GetMapping("/vendors")
-	public Iterable<Vendors> fetchVendors() {
+	public Iterable<Vendor> fetchVendors() {
 		return vendorsRepository.findAll();
 	}
 
