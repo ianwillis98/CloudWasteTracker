@@ -3,10 +3,15 @@ package com.cloudwastetracker.CloudWasteTracker.utilization;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.cloudwastetracker.CloudWasteTracker.resource.Resource;
 
 @Entity
 public class UtilizationRecord implements Serializable {
@@ -18,7 +23,9 @@ public class UtilizationRecord implements Serializable {
 	
 	private String billingAccount;
 	
-	private String instanceId;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "resource_id")
+	private Resource resource;
 	
 	private String resourceName;
 	
@@ -53,12 +60,12 @@ public class UtilizationRecord implements Serializable {
 		this.billingAccount = billingAccount;
 	}
 
-	public String getInstanceId() {
-		return instanceId;
+	public Resource getResource() {
+		return this.resource;
 	}
 
-	public void setInstanceId(String instanceId) {
-		this.instanceId = instanceId;
+	public void setResource(Resource resource) {
+		this.resource = resource;
 	}
 
 	public String getResourceName() {

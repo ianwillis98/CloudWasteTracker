@@ -3,10 +3,15 @@ package com.cloudwastetracker.CloudWasteTracker.rightsizing;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.cloudwastetracker.CloudWasteTracker.resource.Resource;
 
 @Entity
 public class RightsizingRecord implements Serializable {
@@ -30,7 +35,9 @@ public class RightsizingRecord implements Serializable {
 	
 	private double memoryCapacity;
 	
-	private String resourceId;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "resource_id")
+	private Resource resource;
 
 	
 	public RightsizingRecord() {
@@ -116,16 +123,12 @@ public class RightsizingRecord implements Serializable {
 	public void setMemoryCapacity(double memoryCapacity) {
 		this.memoryCapacity = memoryCapacity;
 	}
-
-
-	public String getResourceId() {
-		return resourceId;
-	}
-
-
-	public void setResourceId(String resourceId) {
-		this.resourceId = resourceId;
-	}
-
 	
+	public Resource getResource() {
+		return this.resource;
+	}
+
+	public void setResource(Resource resource) {
+		this.resource = resource;
+	}
 }

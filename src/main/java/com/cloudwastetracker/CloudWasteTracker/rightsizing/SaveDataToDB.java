@@ -34,7 +34,7 @@ public class SaveDataToDB {
 		repo.setLocalDrives(model.result.get(0).localDrives);
 		repo.setCpuCapacity(model.result.get(0).cpuCapacity);
 		repo.setMemoryCapacity(model.result.get(0).memoryCapacity);
-		repo.setResourceId(id);
+		//repo.setResourceId(id);
 		temp.save(repo);
 		
 	}
