@@ -1,4 +1,4 @@
-package com.cloudwastetracker.CloudWasteTracker.record;
+package com.cloudwastetracker.CloudWasteTracker.rightsizing;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -8,12 +8,11 @@ import org.springframework.stereotype.Component;
 import com.cloudwastetracker.CloudWasteTracker.cloudability.CloudabilityClient;
 import com.cloudwastetracker.CloudWasteTracker.resource.Resource;
 import com.cloudwastetracker.CloudWasteTracker.resource.ResourceRepository;
-import com.cloudwastetracker.CloudWasteTracker.rightsizing.RightsizingModel;
 
 @Component
 public class SaveDataToDB {
 	@Autowired
-	RecordRepository temp;
+	RightsizingRecordRepository temp;
 
 	@Autowired
 	CloudabilityClient c;
@@ -25,7 +24,7 @@ public class SaveDataToDB {
 		
 		//https://www.baeldung.com/spring-data-jpa-pagination-sorting for sorting by timestamp
 		
-		Record repo = new Record();
+		RightsizingRecord repo = new RightsizingRecord();
 		RightsizingModel model = c.fetchRightsizing(id).getBody();
 		repo.setMoneySpent(model.result.get(0).totalSpend);
 		repo.setTimeStamp(new Timestamp(new Date().getTime()));

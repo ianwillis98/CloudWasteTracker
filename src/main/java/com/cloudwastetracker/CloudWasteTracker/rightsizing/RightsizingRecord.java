@@ -1,4 +1,4 @@
-package com.cloudwastetracker.CloudWasteTracker.record;
+package com.cloudwastetracker.CloudWasteTracker.rightsizing;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Record implements Serializable {
+public class RightsizingRecord implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private int id;
@@ -33,7 +33,7 @@ public class Record implements Serializable {
 	private String resourceId;
 
 	
-	public Record() {
+	public RightsizingRecord() {
 		
 	}
 
