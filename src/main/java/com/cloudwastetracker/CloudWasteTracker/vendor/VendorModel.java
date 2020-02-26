@@ -2,13 +2,11 @@ package com.cloudwastetracker.CloudWasteTracker.vendor;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+public class VendorModel {
 
-public class VendorModels {
+	public List<Result> result;
 
-	public List<VendorModels> result;
-
-	public static class VendorModel {
+	public static class Result {
 
 		public String key;
 		public String label;
