@@ -1,7 +1,7 @@
 package com.cloudwastetracker.CloudWasteTracker.cloudability;
 
 import com.cloudwastetracker.CloudWasteTracker.measures.MeasuresModel;
-import com.cloudwastetracker.CloudWasteTracker.resources.ResourceModel;
+import com.cloudwastetracker.CloudWasteTracker.resource.ResourceModel;
 import com.cloudwastetracker.CloudWasteTracker.rightsizing.RightsizingModel;
 import com.cloudwastetracker.CloudWasteTracker.utilization.UtilizationReportModel;
 import com.cloudwastetracker.CloudWasteTracker.vendor.VendorModels;
