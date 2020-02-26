@@ -1,8 +1,10 @@
 package com.cloudwastetracker.CloudWasteTracker.cloudability;
 
 import com.cloudwastetracker.CloudWasteTracker.measures.MeasuresModel;
+import com.cloudwastetracker.CloudWasteTracker.resource.ResourceModel;
 import com.cloudwastetracker.CloudWasteTracker.rightsizing.RightsizingModel;
-import com.cloudwastetracker.CloudWasteTracker.vendor.VendorModels;
+import com.cloudwastetracker.CloudWasteTracker.utilization.UtilizationReportModel;
+import com.cloudwastetracker.CloudWasteTracker.vendor.VendorModel;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
@@ -22,6 +24,8 @@ import java.nio.charset.StandardCharsets;
 public class CloudabilityClient {
 
     private static final String CLOUDABILITY_V1_MEASURES_URL = "https://app.cloudability.com/api/1/reporting/cost/measures";
+    private static final String CLOUDABILITY_V1_UTILIZATION_URL = "https://app.cloudability.com/api/1/reporting/run?end_date=yesterday+at+23%3A59%3A59&filters=utilization_hours>0,hour%3D%3D5,tag4!%3D7933,group_name5!%3DProduction,vendor_account_name!%3D%40cp01,product_name%3D%3DAmazon+Elastic+Compute+Cloud&metrics=utilization_hours,estimated_cost&order=desc&sort_by=estimated_cost&start_date=yesterday+at+00%3A00%3A00&dimensions=category5,vendor_account_name,product_name,instance_identifier,tag6,tag5,instance_size,category3,tag7,tag2";
+    private static final String CLOUDABILITY_V1_RESOURCE_URL = "https://app.cloudability.com/api/1/reporting/cost/run?end_date=2020-02-25&filters=resource_identifier=={resourceId}&metrics=unblended_cost&order=desc&sort_by=unblended_cost&start_date=2020-02-25&dimensions=resource_identifier,vendor_account_identifier,vendor_account_name,group_name4,tag6,tag5,tag4,category3,category4,item_description,instance_type,tag2,tag7,tag1,group_name5&max_results=1&offset=0";
 
     private static final String CLOUDABILITY_V3_RIGHTSIZING_URL = "https://api.cloudability.com/v3/rightsizing/aws/recommendations/ec2?filters=resourceIdentifier=={resourceIdentifier}&rank=default&maxRecsPerResource=1";
     private static final String CLOUDABILITY_V3_VENDORS_URL = "https://api.cloudability.com/v3/vendors";
@@ -40,8 +44,16 @@ public class CloudabilityClient {
         return this.restTemplateV1.getForEntity(CLOUDABILITY_V1_MEASURES_URL, MeasuresModel[].class);
     }
 
-    public ResponseEntity<VendorModels> fetchVendors() {
-        return this.restTemplateV3.getForEntity(CLOUDABILITY_V3_VENDORS_URL, VendorModels.class);
+    public ResponseEntity<UtilizationReportModel> fetchUtilizationReport() {
+        return this.restTemplateV1.getForEntity(CLOUDABILITY_V1_UTILIZATION_URL, UtilizationReportModel.class);
+    }
+
+    public ResponseEntity<ResourceModel> fetchResource(String resourceId) {
+        return this.restTemplateV1.getForEntity(CLOUDABILITY_V1_RESOURCE_URL, ResourceModel.class, resourceId);
+    }
+
+    public ResponseEntity<VendorModel> fetchVendors() {
+        return this.restTemplateV3.getForEntity(CLOUDABILITY_V3_VENDORS_URL, VendorModel.class);
     }
 
     public ResponseEntity<RightsizingModel> fetchRightsizing(String resourceIdentifier) {

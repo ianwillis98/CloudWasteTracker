@@ -1,4 +1,4 @@
-package com.cloudwastetracker.CloudWasteTracker.resources;
+package com.cloudwastetracker.CloudWasteTracker.resource;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
