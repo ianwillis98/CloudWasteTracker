@@ -15,18 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class VendorController {
 
+	private CloudabilityClient client;
 	private VendorRepository vendorsRepository;
 
 	@Autowired
 	private VendorsRds rds;
 
-	public VendorController(VendorRepository vendorsRepository) {
+	public VendorController(CloudabilityClient client, VendorRepository vendorsRepository) {
+		this.client = client;
 		this.vendorsRepository = vendorsRepository;
 	}
 	
 	@GetMapping("/vendors")
-	public Iterable<Vendor> fetchVendors() {
-		return vendorsRepository.findAll();
+	public VendorModel fetchVendors() {
+		return client.fetchVendors().getBody();
 	}
 
 	@GetMapping("/rds")
