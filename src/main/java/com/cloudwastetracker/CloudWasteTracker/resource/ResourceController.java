@@ -1,4 +1,4 @@
-package com.cloudwastetracker.CloudWasteTracker.resources;
+package com.cloudwastetracker.CloudWasteTracker.resource;
 
 import com.cloudwastetracker.CloudWasteTracker.cloudability.CloudabilityClient;
 import org.springframework.beans.factory.annotation.Autowired;
