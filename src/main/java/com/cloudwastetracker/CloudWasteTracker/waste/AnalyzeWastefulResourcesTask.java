@@ -28,7 +28,7 @@ public class AnalyzeWastefulResourcesTask {
         this.resourceWasteRepository = resourceWasteRepository;
     }
 
-    @Scheduled(fixedRate = ONE_DAY_IN_MILLIS, initialDelay = ONE_DAY_IN_MILLIS / 2)
+    //@Scheduled(fixedRate = ONE_DAY_IN_MILLIS, initialDelay = ONE_DAY_IN_MILLIS / ONE_DAY_IN_MILLIS)
     public void analyzeWastefulResources() {
         logger.log(Level.INFO, "Beginning AnalyzeWastefulResourcesTask");
 
@@ -59,7 +59,7 @@ public class AnalyzeWastefulResourcesTask {
             waste.setNodeType(rightsizingResult.nodeType);
             waste.setUnitPrice(rightsizingResult.unitPrice);
             waste.setTotalSpend(rightsizingResult.totalSpend);
-            waste.setCpuCapacity(rightsizingResult.cpuCapactiy);
+            waste.setCpuCapacity(rightsizingResult.cpuCapacity);
             waste.setMemoryCapacity(rightsizingResult.memoryCapacity);
             waste.setNetworkCapacity(rightsizingResult.networkCapacity);
             waste.setHoursRunning(rightsizingResult.hoursRunning);
