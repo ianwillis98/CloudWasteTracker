@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.cloudwastetracker.CloudWasteTracker.resource.Resource;
+import com.cloudwastetracker.CloudWasteTracker.resources.Resource;
 
 @Entity
 public class UtilizationRecord implements Serializable {

@@ -1,9 +1,13 @@
-package com.cloudwastetracker.CloudWasteTracker.resource;
+package com.cloudwastetracker.CloudWasteTracker.resources;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class Resource {
@@ -25,6 +29,13 @@ public class Resource {
     private String disbursementCode;
     private String environment;
 
+    @Column(name = "created_at")
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
     public String getResourceId() {
         return resourceId;
     }
