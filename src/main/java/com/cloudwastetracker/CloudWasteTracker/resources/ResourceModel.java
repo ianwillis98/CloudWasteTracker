@@ -1,4 +1,4 @@
-package com.cloudwastetracker.CloudWasteTracker.resource;
+package com.cloudwastetracker.CloudWasteTracker.resources;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
