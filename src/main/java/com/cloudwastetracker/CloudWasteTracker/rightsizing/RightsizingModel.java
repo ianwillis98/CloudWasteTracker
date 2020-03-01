@@ -16,7 +16,7 @@ public class RightsizingModel {
         public String nodeType;
         public double unitPrice;
         public double totalSpend;
-        public int cpuCapactiy;
+        public int cpuCapacity;
         public int memoryCapacity;
         public int networkCapacity;
         public double hoursRunning;
