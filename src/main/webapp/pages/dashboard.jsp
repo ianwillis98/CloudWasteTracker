@@ -18,6 +18,11 @@
 	</head>
 	<body>
 		<div class = "main">
+		
+		<img alt="Nationwide" src="pages/logo.png" style ="  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 100%;">
 		<h2>What attribute do you want to use for search</h2>
 		<div class="select">
 			<select name="slt-1" id="slt-1">
@@ -32,7 +37,7 @@
 		<div class = "input-form">
 			<form name='write' onsubmit='return write_below(this);'>
 			<label for ="option">input</label>
-			<input type ="text" Id = "input_to_write" placeholder="Entered something..">
+			<input type ="text" Id = "input_to_write" placeholder="Enter something..">
 			<input type ="submit" value="Submit">
 			
 			</form>
