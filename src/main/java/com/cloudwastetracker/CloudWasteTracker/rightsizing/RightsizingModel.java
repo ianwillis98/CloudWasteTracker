@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RightsizingModel {
 
-    public List<ResourceStatistics> result;
+    public List<Result> result;
 
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class ResourceStatistics {
+    public static class Result {
 
         public String service;
         public String name;
@@ -30,10 +30,9 @@ public class RightsizingModel {
 
         public List<Recommendations> recommendations;
 
-        @JsonIgnoreProperties(ignoreUnknown = true)
         public static class Recommendations {
-
             public double savings;
         }
+
     }
 }

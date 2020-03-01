@@ -1,7 +1,6 @@
 package com.cloudwastetracker.CloudWasteTracker.utilization;
 
 import com.cloudwastetracker.CloudWasteTracker.cloudability.CloudabilityClient;
-import com.cloudwastetracker.CloudWasteTracker.report.UtilizationReport;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
