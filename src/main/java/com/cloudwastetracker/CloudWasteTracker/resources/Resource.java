@@ -28,6 +28,7 @@ public class Resource {
     private String shutdownAt;
     private String disbursementCode;
     private String environment;
+    private boolean runningOvernight;
 
     @Column(name = "created_at")
     @CreationTimestamp
@@ -155,5 +156,13 @@ public class Resource {
 
     public void setEnvironment(String environment) {
         this.environment = environment;
+    }
+
+    public boolean isRunningOvernight() {
+        return runningOvernight;
+    }
+
+    public void setRunningOvernight(boolean runningOvernight) {
+        this.runningOvernight = runningOvernight;
     }
 }

@@ -23,8 +23,9 @@ public class FindWastefulResourcesTask {
         this.resourceRepository = resourceRepository;
     }
 
+    // cut off gathering more resources for mvp
     //@Scheduled(fixedRate = ONE_DAY_IN_MILLIS, initialDelay = TEN_SECONDS_IN_MILLIS)
-    public void saveDataToDB() {
+    public void findWastefulResources() {
         logger.log(Level.INFO, "Beginning FindWastefulResourcesTask");
 
         ResourcesRunningOvernightModel overnightModel = client.fetchResourcesRunningOvernight().getBody();
@@ -32,11 +33,11 @@ public class FindWastefulResourcesTask {
             for (int i = 0; i < overnightModel.results.size(); i++) {
                 ResourcesRunningOvernightModel.Result result = overnightModel.results.get(i);
                 if (resourceRepository.existsById(result.resourceId)) {
-                    logger.log(Level.INFO, "Updating existing resource from overnight report " + i + ":" + overnightModel.results.size() + " id=" + result.resourceId);
+                    logger.log(Level.INFO, "Updating existing resource from overnight report " + i + ":" + (overnightModel.results.size()-1) + " id=" + result.resourceId);
                 } else {
-                    logger.log(Level.INFO, "Saving new resource from overnight report " + i + ":" + overnightModel.results.size() + " id=" + result.resourceId);
+                    logger.log(Level.INFO, "Saving new resource from overnight report " + i + ":" + (overnightModel.results.size()-1) + " id=" + result.resourceId);
                 }
-                fetchAndSaveNewResource(result.resourceId);
+                fetchAndSaveNewResource(result.resourceId, true);
             }
         }
 
@@ -45,18 +46,18 @@ public class FindWastefulResourcesTask {
             for (int i = 0; i < rightsizingModel.results.size(); i++) {
                 ResourcesNeedingRightsizingModel.Result result = rightsizingModel.results.get(i);
                 if (resourceRepository.existsById(result.resourceId)) {
-                    logger.log(Level.INFO, "Updating existing resource from rightsizing report " + i + ":" + rightsizingModel.results.size() + " id=" + result.resourceId);
+                    logger.log(Level.INFO, "Updating existing resource from rightsizing report " + i + ":" + (rightsizingModel.results.size()-1) + " id=" + result.resourceId);
                 } else {
-                    logger.log(Level.INFO, "Saving new resource from rightsizing report " + i + ":" + rightsizingModel.results.size() + " id=" + result.resourceId);
+                    logger.log(Level.INFO, "Saving new resource from rightsizing report " + i + ":" + (rightsizingModel.results.size()-1) + " id=" + result.resourceId);
                 }
-                fetchAndSaveNewResource(result.resourceId);
+                fetchAndSaveNewResource(result.resourceId, false);
             }
         }
 
         logger.log(Level.INFO, "Ending FindWastefulResourcesTask");
     }
 
-    private void fetchAndSaveNewResource(String resourceId) {
+    private void fetchAndSaveNewResource(String resourceId, boolean runningOvernight) {
         ResourceModel model = client.fetchResource(resourceId).getBody();
         if (model != null && model.results.size() > 0) {
             ResourceModel.Result result = model.results.get(0);
@@ -80,6 +81,7 @@ public class FindWastefulResourcesTask {
             resource.setShutdownAt(result.shutdownAt);
             resource.setDisbursementCode(result.disbursementCode);
             resource.setEnvironment(result.environment);
+            resource.setRunningOvernight(runningOvernight);
             resourceRepository.save(resource);
         }
     }

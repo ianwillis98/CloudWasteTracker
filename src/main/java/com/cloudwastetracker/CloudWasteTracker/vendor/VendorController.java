@@ -13,9 +13,6 @@ public class VendorController {
 	private CloudabilityClient client;
 	private VendorRepository vendorsRepository;
 
-	@Autowired
-	private VendorsRds rds;
-
 	public VendorController(CloudabilityClient client, VendorRepository vendorsRepository) {
 		this.client = client;
 		this.vendorsRepository = vendorsRepository;
@@ -26,8 +23,4 @@ public class VendorController {
 		return client.fetchVendors().getBody();
 	}
 
-	@GetMapping("/rds")
-	public String fetchName() {
-		return this.rds.getFirstName();
-	}
 }
