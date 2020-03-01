@@ -23,7 +23,7 @@ public class FindWastefulResourcesTask {
         this.resourceRepository = resourceRepository;
     }
 
-    @Scheduled(fixedRate = ONE_DAY_IN_MILLIS, initialDelay = TEN_SECONDS_IN_MILLIS)
+    //@Scheduled(fixedRate = ONE_DAY_IN_MILLIS, initialDelay = TEN_SECONDS_IN_MILLIS)
     public void saveDataToDB() {
         logger.log(Level.INFO, "Beginning FindWastefulResourcesTask");
 
@@ -37,8 +37,6 @@ public class FindWastefulResourcesTask {
                     logger.log(Level.INFO, "Saving new resource from overnight report " + i + ":" + overnightModel.results.size() + " id=" + result.resourceId);
                 }
                 fetchAndSaveNewResource(result.resourceId);
-            }
-            for (ResourcesRunningOvernightModel.Result result : overnightModel.results) {
             }
         }
 
@@ -62,6 +60,10 @@ public class FindWastefulResourcesTask {
         ResourceModel model = client.fetchResource(resourceId).getBody();
         if (model != null && model.results.size() > 0) {
             ResourceModel.Result result = model.results.get(0);
+
+            // rightsizing endpoint can't be filtered to exclude production apps
+            if (result.environment.equals("Production")) return;
+
             Resource resource = new Resource();
             resource.setResourceId(resourceId);
             resource.setResourceName(result.resourceName);

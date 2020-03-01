@@ -36,6 +36,7 @@ public class Resource {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
     public String getResourceId() {
         return resourceId;
     }

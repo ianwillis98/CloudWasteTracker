@@ -17,9 +17,14 @@ public class ResourceController {
         this.resourcesRepository = resourcesRepository;
     }
 
+//    @GetMapping("/resource/{resourceId}")
+//    public ResourceModel fetchResources(@PathVariable("resourceId") String resourceId) {
+//        return client.fetchResource(resourceId).getBody();
+//    }
+
     @GetMapping("/resource/{resourceId}")
-    public ResourceModel fetchResources(@PathVariable("resourceId") String resourceId) {
-        return client.fetchResource(resourceId).getBody();
+    public Resource fetchResources(@PathVariable("resourceId") String resourceId) {
+        return resourcesRepository.findById(resourceId).get();
     }
 
     @GetMapping("/resources-needing-rightsizing")
