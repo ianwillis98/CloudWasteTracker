@@ -1,4 +1,4 @@
-package com.cloudwastetracker.CloudWasteTracker.resource;
+package com.cloudwastetracker.CloudWasteTracker.resources;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,8 +12,9 @@ public class ResourceModel {
 
     public static class Result {
 
-        @JsonProperty("resource_identifier")
-        public String resourceId;
+        // getting resourceId slows down api call
+        // @JsonProperty("resource_identifier")
+        // public String resourceId;
         @JsonProperty("tag4")
         public String applicationId;
         @JsonProperty("category3")
