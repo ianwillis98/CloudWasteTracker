@@ -1,23 +1,22 @@
 package com.cloudwastetracker.CloudWasteTracker.rightsizing;
 
 import com.cloudwastetracker.CloudWasteTracker.cloudability.CloudabilityClient;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class RightsizingController {
 
-    private CloudabilityClient cloudabilityClient;
+    private CloudabilityClient client;
 
-    public RightsizingController(CloudabilityClient cloudabilityClient) {
-        this.cloudabilityClient = cloudabilityClient;
+    public RightsizingController(CloudabilityClient client) {
+        this.client = client;
     }
 
-    @GetMapping("/rightsizing/{resourceIdentifier}")
-    @ResponseBody
-    public RightsizingModel fetchRightsizing(@PathVariable String resourceIdentifier) {
-        return this.cloudabilityClient.fetchRightsizing(resourceIdentifier).getBody();
+    @GetMapping("/rightsizing/{resourceId}")
+    public RightsizingModel fetchRightsizing(@PathVariable String resourceId) {
+        return this.client.fetchRightsizing(resourceId).getBody();
     }
+
 }
