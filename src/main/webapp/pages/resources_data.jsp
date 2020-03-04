@@ -12,7 +12,7 @@
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/home">
         <img src="pages/brand.png" width="30" height="24" class="d-inline-block align-top" style="margin-top: 3px"
              alt="">
         Cloud Waste Tracker
@@ -38,7 +38,7 @@
             <th scope="col">#</th>
             <th scope="col">id</th>
             <th scope="col">createdAt</th>
-            <th scope="col">resource</th>
+            <th scope="col">resourceId</th>
             <th scope="col">nodeType</th>
             <th scope="col">unitPrice</th>
             <th scope="col">totalSpend</th>
@@ -65,7 +65,7 @@
                 <td scope="row">${loop.index + 1}</td>
                 <td>${data.id}</td>
                 <td>${data.createdAt}</td>
-                <td>${data.resource}</td>
+                <td>${data.resource.resourceId}</td>
                 <td>${data.nodeType}</td>
                 <td>${data.unitPrice}</td>
                 <td>${data.totalSpend}</td>
