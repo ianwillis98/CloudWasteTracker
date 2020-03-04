@@ -79,5 +79,6 @@ public class AnalyzeWastefulResourcesTask {
 
             resourceWasteRepository.save(waste);
         }
+        
     }
 }
