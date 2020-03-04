@@ -11,7 +11,7 @@
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/home">
         <img src="pages/brand.png" width="30" height="24" class="d-inline-block align-top" style="margin-top: 3px"
              alt="">
         Cloud Waste Tracker
