@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Cloud Waste Tracker</title>
-    <link rel="shortcut icon" href="pages/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="pages/favicon.ico" type="image/x-icon"/>
 </head>
 
 <body>
@@ -22,39 +23,35 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/vendors">Vendors</a>
+            <a class="nav-item nav-link" href="/home">Home</a>
+            <a class="nav-item nav-link active" href="#">Vendors <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="/resources">Resources</a>
             <a class="nav-item nav-link" href="/resources-data">Resources Data</a>
         </div>
     </div>
 </nav>
 <div class="container">
-    <h1 class="display-3 text-center" style="color:#0071bf;">
-        <strong>Cloud Waste Tracker</strong>
-    </h1>
-    <img class="mx-auto d-block" alt="Nationwide logo" src="pages/nationwide.png">
-    <p>
-        <strong>Team Members:</strong> Ian, Tim, Tony, Kacey
-    </p>
-    <p>
-        <strong>Course:</strong> CSE 5915
-    </p>
-    <p>
-        <strong>Sponsor:</strong> Nationwide</p>
-    <h1>
-        Project description:
-    </h1>
-    <p>
-        Managing an enterprise public cloud account in a financially accountable way can be a challenge as environments
-        scale.
-        This project would develop a solution that would identify resources that are materially underutilized, track
-        them
-        over time and create alerts and reports to track the amount of potential wasted spend the resource is
-        generating.
-        The goal of this would be to promote the visibility of underutilized resources that generate spend and promote
-        efficiency opportunities.
-    </p>
+    <h1 class="mt-5">Vendors</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Key</th>
+            <th scope="col">Label</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="vendor" items="${vendors}" varStatus="loop">
+            <tr>
+                <td scope="row">${loop.index + 1}</td>
+                <td>${vendor.vendorKey}</td>
+                <td>${vendor.vendorLabel}</td>
+                <td>${vendor.vendorDescription}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
 
 </body>
