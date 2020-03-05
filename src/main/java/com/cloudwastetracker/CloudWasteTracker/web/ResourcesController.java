@@ -53,6 +53,9 @@ public class ResourcesController {
     @RequestMapping("/resources/{resourceId}")
     public String resourceData(Model model, @PathVariable("resourceId") String resourceId) {
         List<ResourceWaste> resourceData  = this.resourceWasteRepository.findByResourceId(resourceId);
+        for (ResourceWaste waste : resourceData) {
+            waste.getResource().setResourceId(waste.getResource().getResourceId().substring(0, 5) + "...");
+        }
         Collections.reverse(resourceData);
         model.addAttribute("resourcesData", resourceData);
         return "resources_data";
