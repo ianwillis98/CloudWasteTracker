@@ -18,7 +18,7 @@ public class VendorController {
 		this.vendorsRepository = vendorsRepository;
 	}
 	
-	@GetMapping("/vendors")
+	@GetMapping("/vendors-api")
 	public VendorModel fetchVendors() {
 		return client.fetchVendors().getBody();
 	}
