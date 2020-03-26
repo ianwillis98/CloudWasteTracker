@@ -4,10 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Cloud Waste Tracker</title>
     <link rel="shortcut icon" href="pages/favicon.ico" type="image/x-icon"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 </head>
 
 <body>
@@ -32,7 +34,7 @@
 </nav>
 <div class="container">
     <h1 class="mt-5">Resources Data</h1>
-    <table class="table table-striped table-hover table-sm table-responsive" style="max-width: 100%">
+    <table id = "collection" class="table table-striped table-hover table-sm table-responsive" style="max-width: 100%">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -85,10 +87,15 @@
                 <td>${data.recommendationSavingsPct}</td>
                 <td>${data.runningOvernight}</td>
             </tr>
+            
+            
         </c:forEach>
         </tbody>
     </table>
 </div>
+<canvas id ="chart" width="400" height="400"></canvas>
+<script src = "pages/script.js">
 
+</script>
 </body>
 </html>
