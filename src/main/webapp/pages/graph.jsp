@@ -32,13 +32,7 @@
         </div>
     </div>
 </nav>
-<input type="text" placeholder="Type something..." id="rid">
-    <button type="button" onclick="getInputValue();">Get Value</button>
-    
-    <script>
-        function getInputValue(){
-            // Selecting the input element and get its value 
-            var resourceID = document.getElementById("rid").value;
+<canvas id ="chart" width="400" height="400"></canvas>
 <div class="container">
 
 <c:forEach var="data" items="${waste}" varStatus="loop">
@@ -53,10 +47,10 @@
         <c:forEach var="data" items="${waste}" varStatus="loop">
 
             y[${loop.index}] =  ${data.totalSpend};
-            t = "<%=data.createdAt.toString()%>";
-            x[${loop.index}] =  t;
+         
+            x[${loop.index}] =  "${data.createdAt}";
          </c:forEach>
-         console.alert(y);
+        
         const ctx = document.getElementById('chart').getContext('2d');
         const xlabels = x;
         const myChart = new Chart(ctx, {
@@ -99,6 +93,6 @@
     </script>
 
 </div>
-<canvas id ="chart" width="400" height="400"></canvas>
+
 </body>
 </html>
