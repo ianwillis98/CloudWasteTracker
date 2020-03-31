@@ -50,7 +50,6 @@
             <th scope="col">shutdownAt</th>
             <th scope="col">disbursementCode</th>
             <th scope="col">environment</th>
-            <th scope="col">runningOvernight</th>
         </tr>
         </thead>
         <tbody>
@@ -71,7 +70,6 @@
                 <td>${resource.shutdownAt}</td>
                 <td>${resource.disbursementCode}</td>
                 <td>${resource.environment}</td>
-                <td>${resource.runningOvernight}</td>
             </tr>
         </c:forEach>
         </tbody>
