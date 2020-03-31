@@ -46,8 +46,6 @@
             <th scope="col">resourceName</th>
             <th scope="col">resourceOwner</th>
             <th scope="col">itemDescription</th>
-            <th scope="col">powerOnAt</th>
-            <th scope="col">shutdownAt</th>
             <th scope="col">disbursementCode</th>
             <th scope="col">environment</th>
         </tr>
@@ -66,8 +64,6 @@
                 <td>${resource.resourceName}</td>
                 <td>${resource.resourceOwner}</td>
                 <td>${resource.itemDescription}</td>
-                <td>${resource.powerOnAt}</td>
-                <td>${resource.shutdownAt}</td>
                 <td>${resource.disbursementCode}</td>
                 <td>${resource.environment}</td>
             </tr>
