@@ -32,9 +32,9 @@
         </div>
     </div>
 </nav>
-<canvas id ="chart" width="400" height="400"></canvas>
-<div class="container">
 
+<div class="container">
+<canvas id ="chart" width="100" height="50"></canvas>
 <c:forEach var="data" items="${waste}" varStatus="loop">
 
 
@@ -54,7 +54,7 @@
         const ctx = document.getElementById('chart').getContext('2d');
         const xlabels = x;
         const myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: xlabels,
                 datasets: [{
@@ -80,16 +80,35 @@
                 }]
             },
             options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-                
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Specific ResourceID total spend versus time'
+				},
+				
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Time'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Dollars'
+						}
+					}],
+				}
+			}
+		
+        });        
     </script>
 
 </div>
