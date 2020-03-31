@@ -39,7 +39,8 @@ public class ResourceWaste {
     private double recommendationSavings;
     private int recommendationSavingsPct;
 
-    private boolean runningOvernight;
+    private String shutdownAt;
+    private String powerOnAt;
 
     public Long getId() {
         return id;
@@ -193,11 +194,20 @@ public class ResourceWaste {
         this.recommendationSavingsPct = recommendationSavingsPct;
     }
 
-    public boolean isRunningOvernight() {
-        return runningOvernight;
+    public String getShutdownAt() {
+        return shutdownAt;
     }
 
-    public void setRunningOvernight(boolean runningOvernight) {
-        this.runningOvernight = runningOvernight;
+    public void setShutdownAt(String shutdownAt) {
+        this.shutdownAt = shutdownAt;
     }
+
+    public String getPowerOnAt() {
+        return powerOnAt;
+    }
+
+    public void setPowerOnAt(String powerOnAt) {
+        this.powerOnAt = powerOnAt;
+    }
+
 }

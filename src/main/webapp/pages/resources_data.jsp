@@ -58,7 +58,8 @@
             <th scope="col">recommendationRisk</th>
             <th scope="col">recommendationSavings</th>
             <th scope="col">recommendationSavingsPct</th>
-            <th scope="col">runningOvernight</th>
+            <th scope="col">powerOnAt</th>
+            <th scope="col">shutdownAt</th>
         </tr>
         </thead>
         <tbody>
@@ -85,7 +86,8 @@
                 <td>${data.recommendationRisk}</td>
                 <td>${data.recommendationSavings}</td>
                 <td>${data.recommendationSavingsPct}</td>
-                <td>${data.runningOvernight}</td>
+                <td>${data.powerOnAt}</td>
+                <td>${data.shutdownAt}</td>
             </tr>
             
             
