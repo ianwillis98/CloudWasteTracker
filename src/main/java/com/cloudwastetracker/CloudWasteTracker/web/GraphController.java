@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -22,9 +23,9 @@ public class GraphController {
         this.resourceWasteRepository = resourceWasteRepository;
     }
 
-    @GetMapping("/graph")
-    public String getGraph(Model model) {
-        String resourceId = "i-0085abcd80f153800";
+   @GetMapping("/graph/{resourceId}")
+    public String getGraph(Model model, @PathVariable String resourceId) {
+       
         List<ResourceWaste> waste = this.resourceWasteRepository.findByResourceId(resourceId);
         model.addAttribute("waste", waste);
         return "graph";
