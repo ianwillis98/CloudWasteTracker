@@ -28,7 +28,7 @@ public class AnalyzeWastefulResourcesTask {
         this.resourceWasteRepository = resourceWasteRepository;
     }
 
-    //@Scheduled(fixedRate = ONE_DAY_IN_MILLIS, initialDelay = ONE_DAY_IN_MILLIS / ONE_DAY_IN_MILLIS)
+    @Scheduled(fixedRate = ONE_DAY_IN_MILLIS, initialDelay = ONE_DAY_IN_MILLIS / 2)
     public void analyzeWastefulResources() {
         logger.log(Level.INFO, "Beginning AnalyzeWastefulResourcesTask");
 
@@ -75,10 +75,10 @@ public class AnalyzeWastefulResourcesTask {
             waste.setRecommendationSavings(rightsizingRecommendation.savings);
             waste.setRecommendationSavingsPct(rightsizingRecommendation.savingsPct);
 
-            waste.setRunningOvernight(resource.isRunningOvernight());
+            waste.setShutdownAt(utilizationResult.shutdownAt);
+            waste.setPowerOnAt(utilizationResult.powerOnAt);
 
             resourceWasteRepository.save(waste);
         }
-        
     }
 }
