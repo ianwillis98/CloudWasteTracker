@@ -81,7 +81,6 @@ public class FindWastefulResourcesTask {
             resource.setShutdownAt(result.shutdownAt);
             resource.setDisbursementCode(result.disbursementCode);
             resource.setEnvironment(result.environment);
-            resource.setRunningOvernight(runningOvernight);
             resourceRepository.save(resource);
         }
     }
