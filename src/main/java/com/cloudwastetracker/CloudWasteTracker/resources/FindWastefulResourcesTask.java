@@ -77,8 +77,6 @@ public class FindWastefulResourcesTask {
             resource.setDepartment(result.department);
             resource.setItemDescription(result.itemDescription);
             resource.setInstanceType(result.instanceType);
-            resource.setPowerOnAt(result.powerOnAt);
-            resource.setShutdownAt(result.shutdownAt);
             resource.setDisbursementCode(result.disbursementCode);
             resource.setEnvironment(result.environment);
             resourceRepository.save(resource);
