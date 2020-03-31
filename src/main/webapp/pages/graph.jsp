@@ -58,7 +58,7 @@
             data: {
                 labels: xlabels,
                 datasets: [{
-                    label: 'ID versus TotalSpend',
+                    label: 'Time versus TotalSpend',
                     data: y,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
