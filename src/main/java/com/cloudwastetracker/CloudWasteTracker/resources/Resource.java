@@ -24,8 +24,6 @@ public class Resource {
     private String resourceOwner;
     private String itemDescription;
     private String instanceType;
-    private String powerOnAt;
-    private String shutdownAt;
     private String disbursementCode;
     private String environment;
 
@@ -123,22 +121,6 @@ public class Resource {
 
     public void setInstanceType(String instanceType) {
         this.instanceType = instanceType;
-    }
-
-    public String getPowerOnAt() {
-        return powerOnAt;
-    }
-
-    public void setPowerOnAt(String powerOnAt) {
-        this.powerOnAt = powerOnAt;
-    }
-
-    public String getShutdownAt() {
-        return shutdownAt;
-    }
-
-    public void setShutdownAt(String shutdownAt) {
-        this.shutdownAt = shutdownAt;
     }
 
     public String getDisbursementCode() {
