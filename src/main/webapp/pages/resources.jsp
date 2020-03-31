@@ -39,7 +39,7 @@
             <th scope="col">Id</th>
             <th scope="col">applicationId</th>
             <th scope="col">applicationName</th>
-            <th scope="col">applicationOwner</th>
+<%--            <th scope="col">applicationOwner</th>--%>
             <th scope="col">accountId</th>
             <th scope="col">accountName</th>
             <th scope="col">department</th>
@@ -50,17 +50,16 @@
             <th scope="col">shutdownAt</th>
             <th scope="col">disbursementCode</th>
             <th scope="col">environment</th>
-            <th scope="col">runningOvernight</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach var="resource" items="${resources}" varStatus="loop">
             <tr>
                 <td scope="row">${loop.index + 1}</td>
-                <td> <a href="/resources-data/${resource.resourceId}">${resource.resourceId}</td>
+                <td><a href="/resources/${resource.resourceId}">${resource.resourceId}</a></td>
                 <td>${resource.applicationId}</td>
                 <td>${resource.applicationName}</td>
-                <td>${resource.applicationOwner}</td>
+<%--                <td>${resource.applicationOwner}</td>--%>
                 <td>${resource.accountId}</td>
                 <td>${resource.accountName}</td>
                 <td>${resource.department}</td>
@@ -71,7 +70,6 @@
                 <td>${resource.shutdownAt}</td>
                 <td>${resource.disbursementCode}</td>
                 <td>${resource.environment}</td>
-                <td>${resource.runningOvernight}</td>
             </tr>
         </c:forEach>
         </tbody>
