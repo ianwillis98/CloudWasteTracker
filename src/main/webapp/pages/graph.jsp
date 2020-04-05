@@ -45,12 +45,15 @@
 		var x =[];
         var yAmount =[];
         var yPercent = [];
+        var yTotal = [];
         var t = null;
         <c:forEach var="data" items="${waste}" varStatus="loop">
 
         	yPercent[${loop.index}] = ${data.recommendationSavingsPct};
 
             yAmount[${loop.index}] =  ${data.recommendationSavings};
+
+            yTotal[${loop.index}] = ${data.totalSpend};
          
             x[${loop.index}] =  "${fn:substring(data.createdAt, 5, 7)}" + "/" + "${fn:substring(data.createdAt, 8, 10)}" + "/" + "${fn:substring(data.createdAt, 2, 4)}";
          </c:forEach>
@@ -83,7 +86,19 @@
                       'rgba(0, 0, 0, 1)'
                   ,
                   borderWidth: 1
-        	    }]
+        	    }, 
+        	    {
+          	      label: 'Total Amount Spent',
+          	      yAxisID: 'yTotal',
+          	      data: yTotal,
+          	      backgroundColor: 
+                        'rgba(128, 128, 128, 0.2)'
+                    ,
+                    borderColor: 
+                        'rgba(128, 128, 128, 1)'
+                    ,
+                    borderWidth: 1
+          	    }]
         	  },
         	  options: {
 
@@ -110,8 +125,8 @@
         	        type: 'linear',
         	        position: 'left',
         	        ticks: {
-          	          min: 0,
-          	          max: Math.round(Math.max.apply(this, yAmount)*1.15/10)*10
+        	          min: 0,
+          	          max: Math.round(Math.max.apply(this, yTotal)*1.15/10)*10
           	        },
         	        display: true,
   	                scaleLabel: {
@@ -131,7 +146,17 @@
   	                  display: true,
   	                  labelString: 'Amount (%)'
   	                }
-        	      }]
+        	      }, 
+        	      {
+          	        id: 'yTotal',
+          	        type: 'linear',
+          	        position: 'left',
+          	        ticks: {
+            	          min: 0,
+            	          max: Math.round(Math.max.apply(this, yTotal)*1.15/10)*10
+            	        },
+          	        display: false
+          	      }]
         	    }
         	  }
         	});        
