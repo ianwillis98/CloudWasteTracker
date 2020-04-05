@@ -42,11 +42,14 @@
 
     <script>
         var x =[];
-        var y =[];
+        var yAmount =[];
+        var yPercent = [];
         var t = null;
         <c:forEach var="data" items="${waste}" varStatus="loop">
 
-            y[${loop.index}] =  ${data.totalSpend};
+        	yPercent[${loop.index}] = ${data.recommendationSavingsPct};
+
+            yAmount[${loop.index}] =  ${data.recommendationSavings};
          
             x[${loop.index}] =  "${data.createdAt}";
          </c:forEach>
@@ -54,61 +57,79 @@
         const ctx = document.getElementById('chart').getContext('2d');
         const xlabels = x;
         const myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: xlabels,
-                datasets: [{
-                    label: 'Time versus TotalSpend',
-                    data: y,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-				responsive: true,
-				title: {
-					display: true,
-					text: 'Specific ResourceID total spend versus time'
-				},
-				
-				hover: {
-					mode: 'nearest',
-					intersect: true
-				},
-				scales: {
-					xAxes: [{
+        	  type: 'line',
+        	  data: {
+        	    labels: xlabels,
+        	    datasets: [{
+        	      label: 'Amount Wasted',
+        	      yAxisID: 'yAmount',
+        	      data: yAmount,
+        	      backgroundColor: 
+                      'rgba(255, 99, 132, 0.2)'
+                  ,
+                  borderColor: 
+                      'rgba(255, 99, 132, 1)'
+                  ,
+                  borderWidth: 1
+        	    }, {
+        	      label: 'Percent Wasted',
+        	      yAxisID: 'yPercent',
+        	      data: yPercent,
+        	      backgroundColor: 
+                      'rgba(255, 255, 0, 0.2)'
+                  ,
+                  borderColor: 
+                      'rgba(255, 255, 0, 1)'
+                  ,
+                  borderWidth: 1
+        	    }]
+        	  },
+        	  options: {
+
+  				responsive: true,
+  				title: {
+  					display: true,
+  					text: 'Time vs Waste for Resource ID'
+  				},
+  				
+  				hover: {
+  					mode: 'nearest',
+  					intersect: true
+  				},
+        	    scales: {
+        	    	xAxes: [{
 						display: true,
 						scaleLabel: {
 							display: true,
-							labelString: 'Time'
+							labelString: 'Date (YYYY/MM/DD)'
 						}
 					}],
-					yAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'Dollars'
-						}
-					}],
-				}
-			}
-		
-        });        
+        	      yAxes: [{
+        	        id: 'yAmount',
+        	        type: 'linear',
+        	        position: 'left',
+        	        display: true,
+  	                scaleLabel: {
+  	                  display: true,
+  	                  labelString: 'Amount ($)'
+  	                }
+        	      }, {
+        	        id: 'yPercent',
+        	        type: 'linear',
+        	        position: 'right',
+        	        ticks: {
+        	          max: 100,
+        	          min: 0
+        	        },
+        	        display: true,
+  	                scaleLabel: {
+  	                  display: true,
+  	                  labelString: 'Amount (%)'
+  	                }
+        	      }]
+        	    }
+        	  }
+        	});        
     </script>
 
 </div>
