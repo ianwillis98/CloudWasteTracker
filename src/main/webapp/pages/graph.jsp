@@ -42,11 +42,14 @@
 
     <script>
         var x =[];
-        var y =[];
+        var ySpend =[];
+        var yWaste = [];
         var t = null;
         <c:forEach var="data" items="${waste}" varStatus="loop">
 
-            y[${loop.index}] =  ${data.totalSpend};
+        	yWaste[${loop.index}] = ${data.recommendationSavings};
+
+            ySpend[${loop.index}] =  ${data.totalSpend};
          
             x[${loop.index}] =  "${data.createdAt}";
          </c:forEach>
@@ -54,61 +57,57 @@
         const ctx = document.getElementById('chart').getContext('2d');
         const xlabels = x;
         const myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: xlabels,
-                datasets: [{
-                    label: 'Time versus TotalSpend',
-                    data: y,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-				responsive: true,
-				title: {
-					display: true,
-					text: 'Specific ResourceID total spend versus time'
-				},
-				
-				hover: {
-					mode: 'nearest',
-					intersect: true
-				},
-				scales: {
-					xAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'Time'
-						}
-					}],
-					yAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'Dollars'
-						}
-					}],
-				}
-			}
-		
-        });        
+        	  type: 'line',
+        	  data: {
+        	    labels: xlabels,
+        	    datasets: [{
+        	      label: 'Total Spent',
+        	      data: ySpend,
+                  borderColor: 
+                      'rgba(0, 0, 0, 1)'
+                  ,
+                  borderWidth: 1
+        	    }, {
+        	      label: 'Amount Wasted',
+        	      data: yWaste,
+        	      backgroundColor: 
+                      'rgba(255, 0, 0, 0.3)'
+                  ,
+                  borderColor: 
+                      'rgba(255, 0, 0, 1)'
+                  ,
+                  borderWidth: 1
+        	    }]
+        	  },
+        	  options: {
+  				responsive: true,
+  				title: {
+  					display: true,
+  					text: 'Time vs Waste for Resource ID'
+  				},
+  				
+  				hover: {
+  					mode: 'nearest',
+  					intersect: true
+  				} ,
+  	            scales: {
+  	              xAxes: [{
+  	                display: true,
+  	                scaleLabel: {
+  	                  display: true,
+  	                  labelString: 'Date (YYYY/MM/DD)'
+  	                }
+  	              }],
+  	              yAxes: [{
+  	                display: true,
+  	                scaleLabel: {
+  	                  display: true,
+  	                  labelString: 'Amount ($)'
+  	                }
+  	              }],
+  	            }
+        	  }
+        	});        
     </script>
 
 </div>
