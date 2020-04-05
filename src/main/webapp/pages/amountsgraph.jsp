@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,17 +41,17 @@
 </c:forEach>
 
     <script>
-		var x =[];
+        var x =[];
         var yAmount =[];
         var yPercent = [];
         var t = null;
         <c:forEach var="data" items="${waste}" varStatus="loop">
 
-        	yPercent[${loop.index}] = ${data.recommendationSavingsPct};
+        	yPercent[${loop.index}] = ${data.recommendationSavings};
 
-            yAmount[${loop.index}] =  ${data.recommendationSavings};
+            yAmount[${loop.index}] =  ${data.totalSpend};
          
-            x[${loop.index}] =  "${fn:substring(data.createdAt, 5, 7)}" + "/" + "${fn:substring(data.createdAt, 8, 10)}" + "/" + "${fn:substring(data.createdAt, 2, 4)}";
+            x[${loop.index}] =  "${data.createdAt}";
          </c:forEach>
         
         const ctx = document.getElementById('chart').getContext('2d');
@@ -62,7 +61,7 @@
         	  data: {
         	    labels: xlabels,
         	    datasets: [{
-        	      label: 'Amount Wasted',
+        	      label: 'Total Spent',
         	      yAxisID: 'yAmount',
         	      data: yAmount,
         	      backgroundColor: 
@@ -73,14 +72,14 @@
                   ,
                   borderWidth: 1
         	    }, {
-        	      label: 'Percent Wasted',
+        	      label: 'Amount Wasted',
         	      yAxisID: 'yPercent',
         	      data: yPercent,
         	      backgroundColor: 
-                      'rgba(255, 255, 255, 0.0)'
+                      'rgba(255, 255, 0, 0.2)'
                   ,
                   borderColor: 
-                      'rgba(0, 0, 0, 1)'
+                      'rgba(255, 255, 0, 1)'
                   ,
                   borderWidth: 1
         	    }]
@@ -90,7 +89,7 @@
   				responsive: true,
   				title: {
   					display: true,
-  					text: 'Waste over Time for Resource ID: ' + ' ${resourceId}' + ' From: <start date> To: <end date>'
+  					text: 'Time vs Waste for Resource ID'
   				},
   				
   				hover: {
@@ -102,35 +101,17 @@
 						display: true,
 						scaleLabel: {
 							display: true,
-							labelString: 'Date (MM/DD/YY)'
+							labelString: 'Date (YYYY/MM/DD)'
 						}
 					}],
         	      yAxes: [{
         	        id: 'yAmount',
         	        type: 'linear',
         	        position: 'left',
-        	        ticks: {
-          	          min: 0,
-          	          max: Math.round(Math.max.apply(this, yAmount)*1.15/10)*10
-          	        },
-        	        display: true,
-  	                scaleLabel: {
-  	                  display: true,
-  	                  labelString: 'Amount ($)'
-  	                }
         	      }, {
         	        id: 'yPercent',
         	        type: 'linear',
         	        position: 'right',
-        	        ticks: {
-        	          max: 100,
-        	          min: 0
-        	        },
-        	        display: true,
-  	                scaleLabel: {
-  	                  display: true,
-  	                  labelString: 'Amount (%)'
-  	                }
         	      }]
         	    }
         	  }
