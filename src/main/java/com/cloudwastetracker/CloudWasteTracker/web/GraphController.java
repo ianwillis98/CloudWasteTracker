@@ -28,6 +28,7 @@ public class GraphController {
        
         List<ResourceWaste> waste = this.resourceWasteRepository.findByResourceId(resourceId);
         model.addAttribute("waste", waste);
+        model.addAttribute("resourceId", resourceId);
         return "graph";
     }
 
