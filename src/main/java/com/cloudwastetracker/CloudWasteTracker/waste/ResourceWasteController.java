@@ -30,7 +30,7 @@ public class ResourceWasteController {
     public List<ResourceWaste> fetchResourceWaste(@PathVariable String resourceId) {
         return resourceWasteRepository.findByResourceId(resourceId);
     }
-    
+    /*example localhost:5000/waste/?id=i-00bcaebf4bb9884c4&startDate=2020-04-01&endDate=2020-04-30*/
     @GetMapping("/waste/")
     public List<ResourceWaste> fetchResourceWasteTwoDates(@RequestParam(name = "id") String resourceId,@RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate startDate, @RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate endDate){
     	return resourceWasteRepository.findByResourceIdAndDate(resourceId,startDate, endDate);
