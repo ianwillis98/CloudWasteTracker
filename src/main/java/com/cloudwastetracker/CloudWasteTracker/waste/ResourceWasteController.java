@@ -8,8 +8,11 @@ import java.time.LocalTime;
 import java.time.Month;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -27,7 +30,11 @@ public class ResourceWasteController {
     public List<ResourceWaste> fetchResourceWaste(@PathVariable String resourceId) {
         return resourceWasteRepository.findByResourceId(resourceId);
     }
-
+    
+    @GetMapping("/waste/")
+    public List<ResourceWaste> fetchResourceWasteTwoDates(@RequestParam(name = "id") String resourceId,@RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate startDate, @RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate endDate){
+    	return resourceWasteRepository.findByResourceIdAndDate(resourceId,startDate, endDate);
+    }
 	
 
 }
