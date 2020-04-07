@@ -95,8 +95,6 @@
         </tbody>
     </table>
 </div>
-<canvas id ="chart" width="400" height="400"></canvas>
-<script src = "pages/script.js">
 
 </script>
 </body>
