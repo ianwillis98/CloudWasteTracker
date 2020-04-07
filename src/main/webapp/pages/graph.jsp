@@ -100,10 +100,15 @@
 					}],
 					yAxes: [{
 						display: true,
+						beginAtZero: true,
 						scaleLabel: {
 							display: true,
 							labelString: 'Dollars'
+							
+							
+								
 						}
+					
 					}],
 				}
 			}
