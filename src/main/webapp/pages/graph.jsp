@@ -48,11 +48,12 @@
 	        	<form>
 		            <div class="form-group">
 		                <div class='input-group date' id='datepicker'>
-		                    <input type='text' class="form-control" id="d1" />
+		                    <input type='text' class="form-control"  />
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
 		                </div>
+		                
 		            </div>
 		        </form>
 	        </div>
@@ -60,7 +61,7 @@
 	        	<form>
 		            <div class="form-group">
 		                <div class='input-group date' id='datepicker2'>
-		                    <input type='text' class="form-control" id="d2"/>
+		                    <input type='text' class="form-control"/>
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
@@ -98,13 +99,7 @@
 		        orientation: "button"
 	        });
 	    });
-	    var Sdate=$('#d1').val().split('/');
-	    var Sday = Sdate[0];
-	    var Smonth = Sdate[1];
-	    var Syear = Sdate[2];
-	    console.log(Sday);
-	    console.log(Smonth);
-	    console.log(Syear);
+
 	</script>
 	
 <div class="container">
