@@ -28,7 +28,8 @@ public class AnalyzeWastefulResourcesTask {
         this.resourceWasteRepository = resourceWasteRepository;
     }
 
-    @Scheduled(fixedRate = ONE_DAY_IN_MILLIS, initialDelay = ONE_DAY_IN_MILLIS / 2)
+    //everyday at 5am
+    @Scheduled(cron="0 0 5 * * ?")
     public void analyzeWastefulResources() {
         logger.log(Level.INFO, "Beginning AnalyzeWastefulResourcesTask");
 
