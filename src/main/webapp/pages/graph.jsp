@@ -41,13 +41,25 @@
 </nav>
 <div class="container">
 		<div class="row">
-			<h2>Select Start Date</h2>
+			<h2>Select Start to End Date</h2>
 		</div>
 		<div class="row">
-	        <div class='col-sm-6'width ='20'>
+	        <div class='col-sm-6'>
 	        	<form>
 		            <div class="form-group">
 		                <div class='input-group date' id='datepicker'>
+		                    <input type='text' class="form-control" />
+		                    <span class="input-group-addon">
+		                        <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+		                </div>
+		            </div>
+		        </form>
+	        </div>
+	        <div class='col-sm-6'>
+	        	<form>
+		            <div class="form-group">
+		                <div class='input-group date' id='datepicker2'>
 		                    <input type='text' class="form-control" />
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
@@ -73,30 +85,8 @@
 		        orientation: "button"
 	        });
 	    });
-	</script>
-	<div class="container">
-		<div class="row">
-			<h2>Select End Date</h2>
-		</div>
-		<div class="row">
-	        <div class='col-sm-6'width ='20'>
-	        	<form>
-		            <div class="form-group">
-		                <div class='input-group date' id='datepicker'>
-		                    <input type='text' class="form-control" />
-		                    <span class="input-group-addon">
-		                        <span class="glyphicon glyphicon-calendar"></span>
-		                    </span>
-		                </div>
-		            </div>
-		        </form>
-	        </div>
-	    </div>
-	</div>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-	<script >
 	    $(function () {
-	        $('#datepicker').datepicker({
+	        $('#datepicker2').datepicker({
 	            format: "dd/mm/yyyy",
 	            autoclose: true,
 	            todayHighlight: true,
@@ -109,6 +99,7 @@
 	        });
 	    });
 	</script>
+	
 <div class="container">
 <canvas id ="chart" width="100" height="50"></canvas>
 <c:forEach var="data" items="${waste}" varStatus="loop">
