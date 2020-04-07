@@ -44,8 +44,14 @@ public class AnalyzeWastefulResourcesTask {
     private void createAndSaveNewResourceWaste(Resource resource) {
         String resourceId = resource.getResourceId();
 
-        RightsizingModel rightsizingModel = this.client.fetchRightsizing(resourceId).getBody();
-        UtilizationModel utilizationModel = this.client.fetchUtilization(resourceId).getBody();
+        RightsizingModel rightsizingModel = null;
+        UtilizationModel utilizationModel = null;
+        try {
+            rightsizingModel = this.client.fetchRightsizing(resourceId).getBody();
+            utilizationModel = this.client.fetchUtilization(resourceId).getBody();
+        } catch (Exception e) {
+            return;
+        }
 
         if (rightsizingModel != null && rightsizingModel.results.size() > 0 && rightsizingModel.results.get(0).recommendations.size() > 0
                 && utilizationModel != null && utilizationModel.results.size() > 0) {
