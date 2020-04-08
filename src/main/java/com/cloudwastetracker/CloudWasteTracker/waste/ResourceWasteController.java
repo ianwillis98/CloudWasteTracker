@@ -35,6 +35,16 @@ public class ResourceWasteController {
     public List<ResourceWaste> fetchResourceWasteTwoDates(@RequestParam(name = "id") String resourceId,@RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate startDate, @RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate endDate){
     	return resourceWasteRepository.findByResourceIdAndDate(resourceId,startDate, endDate);
     }
-	
+    //example http://localhost:5000/waste_of_app/?app=TestFIT01&startDate=2020-04-01&endDate=2020-04-30
+    @GetMapping("/waste_of_app/")
+    public List<WasteData> fetchWasteByAppName(@RequestParam(name = "app") String appName,@RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate startDate, @RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate endDate){
+    	return resourceWasteRepository.findByAppName(appName, startDate, endDate);
+    }
+    
+    //example http://localhost:5000/waste_of_department/?dept=Claims&startDate=2020-04-01&endDate=2020-04-30
+    @GetMapping("/waste_of_department/")
+    public List<WasteData> fetchWasteBydepartment(@RequestParam(name = "dept") String department,@RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate startDate, @RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate endDate){
+    	return resourceWasteRepository.findByDepartment(department, startDate, endDate);
+    }
 
 }
