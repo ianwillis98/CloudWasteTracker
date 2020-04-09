@@ -42,7 +42,7 @@
 </nav>
 <div class="container">
 		<div class="row">
-			<h2>Select Start to End Date</h2>
+			<h2>Select Date Range</h2>
 		</div>
 		<div class="row">
 	        <div class='col-sm-6'>
@@ -76,7 +76,7 @@
 	<script >
 	    $(function () {
 	        $('#datepicker').datepicker({
-	            format: "dd/mm/yyyy",
+	            format: "mm/dd/yy",
 	            autoclose: true,
 	            todayHighlight: true,
 		        showOtherMonths: true,
@@ -89,7 +89,7 @@
 	    });
 	    $(function () {
 	        $('#datepicker2').datepicker({
-	            format: "dd/mm/yyyy",
+	            format: "mm/dd/yy",
 	            autoclose: true,
 	            todayHighlight: true,
 		        showOtherMonths: true,
