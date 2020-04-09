@@ -20,9 +20,17 @@ public interface ResourceWasteRepository extends JpaRepository<ResourceWaste, Lo
     
     @Query(value = "select created_at as 'date', sum(total_spend) as 'totalSpent', sum(recommendation_savings) as 'totalWaste' from resource_waste where resource_id in "
     		+ "(SELECT resource_id FROM resource where account_name = :appName) AND created_at BETWEEN :startDate AND :endDate group by date(created_at) order by created_at ASC;", nativeQuery = true)
-    public List<WasteData> findByAppName(@Param("appName") String appName, @Param("startDate")LocalDate start, @Param("endDate")LocalDate end);
+    public List<WasteData> findByAppNameBetweenDates(@Param("appName") String appName, @Param("startDate")LocalDate start, @Param("endDate")LocalDate end);
     
     @Query(value = "select created_at as 'date', sum(total_spend) as 'totalSpent', sum(recommendation_savings) as 'totalWaste' from resource_waste where resource_id in "
     		+ "(SELECT resource_id FROM resource where department = :department) AND created_at BETWEEN :startDate AND :endDate group by date(created_at) order by created_at ASC;", nativeQuery = true)
-    public List<WasteData> findByDepartment(@Param("department") String appName, @Param("startDate")LocalDate start, @Param("endDate")LocalDate end);
+    public List<WasteData> findByDepartmentBetweenDates(@Param("department") String department, @Param("startDate")LocalDate start, @Param("endDate")LocalDate end);
+    
+    @Query(value = "select created_at as 'date', sum(total_spend) as 'totalSpent', sum(recommendation_savings) as 'totalWaste' from resource_waste where resource_id in "
+    		+ "(SELECT resource_id FROM resource where account_name = :appName) group by date(created_at) order by created_at ASC;", nativeQuery = true)
+    public List<WasteData> findByAppName(@Param("appName") String appName);
+    
+    @Query(value = "select created_at as 'date', sum(total_spend) as 'totalSpent', sum(recommendation_savings) as 'totalWaste' from resource_waste where resource_id in "
+    		+ "(SELECT resource_id FROM resource where department = :department) group by date(created_at) order by created_at ASC;", nativeQuery = true)
+    public List<WasteData> findByDepartment(@Param("department") String department);
 }

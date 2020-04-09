@@ -40,13 +40,25 @@ public class ResourceWasteController {
     //example http://localhost:5000/waste_of_app/?app=TestFIT01&startDate=2020-04-01&endDate=2020-04-30
     @GetMapping("/waste_of_app/")
     public List<WasteData> fetchWasteByAppName(@RequestParam(name = "app") String appName,@RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate startDate, @RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate endDate){
-    	return resourceWasteRepository.findByAppName(appName, startDate, endDate);
+    	return resourceWasteRepository.findByAppNameBetweenDates(appName, startDate, endDate);
     }
     
     //example http://localhost:5000/waste_of_department/?dept=Claims&startDate=2020-04-01&endDate=2020-04-30
     @GetMapping("/waste_of_department/")
     public List<WasteData> fetchWasteBydepartment(@RequestParam(name = "dept") String department,@RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate startDate, @RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate endDate){
-    	return resourceWasteRepository.findByDepartment(department, startDate, endDate);
+    	return resourceWasteRepository.findByDepartmentBetweenDates(department, startDate, endDate);
     }
+    
+    @GetMapping("/waste_of_app/{appName}")
+    public List<WasteData> fetchWasteByApp(@PathVariable String appName){
+    	return resourceWasteRepository.findByAppName(appName);
+    }
+    
+
+    @GetMapping("/waste_of_department/{department}")
+    public List<WasteData> fetchWasteByDepartment(@PathVariable String department){
+    	return resourceWasteRepository.findByDepartment(department);
+    }
+
 
 }
