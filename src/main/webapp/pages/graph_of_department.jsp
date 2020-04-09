@@ -114,12 +114,12 @@
         var yTotal = [];
         var t = null;
         <c:forEach var="data" items="${waste}" varStatus="loop">
-        	yPercent[${loop.index}] = ${data.recommendationSavingsPct};
-            yAmount[${loop.index}] =  ${data.recommendationSavings};
-            yTotal[${loop.index}] = ${data.totalSpend};
-         
-            x[${loop.index}] =  "${fn:substring(data.createdAt, 5, 7)}" + "/" + "${fn:substring(data.createdAt, 8, 10)}" + "/" + "${fn:substring(data.createdAt, 2, 4)}";
-         </c:forEach>
+    	yPercent[${loop.index}] = ${data.getWastePercent()};
+        yAmount[${loop.index}] =  ${Math.floor(data.getTotalWaste()*100)/100};
+        yTotal[${loop.index}] = ${Math.floor(data.getTotalSpent()*100)/100};
+     
+        x[${loop.index}] =  "${fn:substring(data.getDate(), 5, 7)}" + "/" + "${fn:substring(data.getDate(), 8, 10)}" + "/" + "${fn:substring(data.getDate(), 2, 4)}";
+     </c:forEach>
         
         const ctx = document.getElementById('chart').getContext('2d');
         const xlabels = x;
@@ -128,10 +128,9 @@
         	  data: {
         	    labels: xlabels,
         	    datasets: [{
-        	      label: 'Wasted Spend ($)',
+        	      label: 'Wasted Spend (%)',
         	      yAxisID: 'yAmount',
         	      data: yAmount,
-        	      order: 2,
         	      backgroundColor: 
                       'rgba(255, 99, 132, 0.2)'
                   ,
@@ -142,7 +141,6 @@
         	    }, {
         	      label: 'Wasted Spend (%)',
         	      yAxisID: 'yPercent',
-        	      order: 3,
         	      data: yPercent,
         	      backgroundColor: 
                       'rgba(255, 255, 255, 0.0)'
@@ -155,7 +153,6 @@
         	    {
           	      label: 'Total Spend ($)',
           	      yAxisID: 'yTotal',
-          	      order: 1,
           	      data: yTotal,
           	      backgroundColor: 
                         'rgba(128, 128, 128, 0.2)'
@@ -170,7 +167,7 @@
   				responsive: true,
   				title: {
   					display: true,
-  					text: 'Waste over Time for Resource ID: ' + ' ${resourceId}',
+  					text: 'Waste over Time for Department: ' + ' ${dept}',
   					fontSize: 30
   				},
   				
