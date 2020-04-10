@@ -33,4 +33,13 @@ public interface ResourceWasteRepository extends JpaRepository<ResourceWaste, Lo
     @Query(value = "select created_at as 'date', sum(total_spend) as 'totalSpent', sum(recommendation_savings) as 'totalWaste' from resource_waste where resource_id in "
     		+ "(SELECT resource_id FROM resource where department = :department) group by date(created_at) order by created_at ASC;", nativeQuery = true)
     public List<WasteData> findByDepartment(@Param("department") String department);
+    
+    @Query(value = "select created_at as 'date', sum(total_spend) as 'totalSpent', sum(recommendation_savings) as 'totalWaste' from resource_waste where resource_id in "
+    		+ "(SELECT resource_id FROM resource where resource_owner = :owner) AND created_at BETWEEN :startDate AND :endDate group by date(created_at) order by created_at ASC;", nativeQuery = true)
+    public List<WasteData> findByOwnerBetweenDates(@Param("owner") String owner, @Param("startDate")LocalDate start, @Param("endDate")LocalDate end);
+    
+    @Query(value = "select created_at as 'date', sum(total_spend) as 'totalSpent', sum(recommendation_savings) as 'totalWaste' from resource_waste where resource_id in "
+    		+ "(SELECT resource_id FROM resource where resource_owner = :owner) group by date(created_at) order by created_at ASC;", nativeQuery = true)
+    public List<WasteData> findByOwner(@Param("owner") String owner);
+    
 }

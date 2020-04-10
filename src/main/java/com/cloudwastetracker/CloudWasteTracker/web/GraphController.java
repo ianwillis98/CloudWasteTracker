@@ -52,5 +52,13 @@ public class GraphController {
 	   model.addAttribute("dept", dept);
 	   return "graph_of_dept";
    }
-
+   
+   @GetMapping("/graph_of_owner/{owner}")
+   public String getOwnerGraph(Model model, @PathVariable String owner) {
+	   List<WasteData> waste = this.resourceWasteRepository.findByOwner(owner);
+	   
+	   model.addAttribute("waste", waste);
+	   model.addAttribute("owner", owner);
+	   return "graph_of_owner";
+   }
 }
