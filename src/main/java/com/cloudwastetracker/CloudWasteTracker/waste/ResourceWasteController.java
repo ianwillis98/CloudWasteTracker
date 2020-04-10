@@ -59,6 +59,14 @@ public class ResourceWasteController {
     public List<WasteData> fetchWasteByDepartment(@PathVariable String department){
     	return resourceWasteRepository.findByDepartment(department);
     }
-
+    
+    @GetMapping("/waste_of_owner/{owner}")
+    public List<WasteData> fetchWasteByOwner(@PathVariable String owner){
+    	return resourceWasteRepository.findByOwner(owner);
+    }
+    @GetMapping("waste_of_owner/")
+    public List<WasteData> fetchWasteByOwnerBetweenDates(@RequestParam(name = "owner")String owner, @RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate startDate, @RequestParam @DateTimeFormat(iso = ISO.DATE)LocalDate endDate){
+    	return resourceWasteRepository.findByOwnerBetweenDates(owner, startDate, endDate);
+    }
 
 }
