@@ -97,5 +97,13 @@
 </div>
 
 </script>
+
+<div>
+<p>
+<center>
+<button style="font-size:100%;color:white;text-align:center;background-color:black;" onclick="document.location = '/graphResource/${resourceId}'">Return to graph for Resource ${resourceId}</button>
+</center>
+</p>
+</div>
 </body>
 </html>
