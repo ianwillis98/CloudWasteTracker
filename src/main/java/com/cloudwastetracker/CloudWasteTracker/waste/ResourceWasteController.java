@@ -26,7 +26,7 @@ public class ResourceWasteController {
     }
     // note if you need to pass in a space replace it with %20 to encode it
     // it's the only way to pass in a url with spaces in the url parameters
-    /*example http://localhost:5000/waste/?id=i-00bcaebf4bb9884c4&startDate=1585713600&endDate=1585886400*/
+    //example http://localhost:5000/waste/?id=i-00bcaebf4bb9884c4&startDate=1585713600&endDate=1585886400
     @GetMapping("/waste/")
     public List<ResourceWaste> fetchResourceWasteTwoDates(@RequestParam(name = "id") String resourceId,@RequestParam int startDate, @RequestParam int endDate){
     	return resourceWasteRepository.findByResourceIdAndDate(resourceId,startDate, endDate);
