@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -61,4 +62,41 @@ public class GraphController {
 	   model.addAttribute("owner", owner);
 	   return "graph_of_owner";
    }
+   
+   @GetMapping("/graph_of_resource/")
+   public String getResourceGraphBetweenDates(Model model, @RequestParam(name = "id") String resourceId, @RequestParam(name = "startDate") int startDate, @RequestParam(name = "endDate") int endDate) {
+	   List<ResourceWaste> waste = this.resourceWasteRepository.findByResourceIdAndDate(resourceId, startDate, endDate);
+	   
+	   model.addAttribute("waste", waste);
+	   model.addAttribute("resourceId", resourceId);
+	   return "graph_of_resource";
+   }
+   
+   @GetMapping("/graph_of_app/")
+   public String getAppGraphBetweenDates(Model model, @RequestParam(name = "app") String appName, @RequestParam(name = "startDate") int startDate, @RequestParam(name = "endDate") int endDate) {
+	   List<WasteData> waste = this.resourceWasteRepository.findByAppNameBetweenDates(appName, startDate, endDate);
+	   
+	   model.addAttribute("waste", waste);
+	   model.addAttribute("appName", appName);
+	   return "graph_of_app";
+   }
+   
+   @GetMapping("/graph_of_dept/")
+   public String getDeptGraphBetweenDates(Model model, @RequestParam(name = "dept") String dept, @RequestParam(name = "startDate") int startDate, @RequestParam(name = "endDate") int endDate) {
+	   List<WasteData> waste = this.resourceWasteRepository.findByDepartmentBetweenDates(dept, startDate, endDate);
+	   
+	   model.addAttribute("waste", waste);
+	   model.addAttribute("dept", dept);
+	   return "graph_of_dept";
+   }
+   
+   @GetMapping("/graph_of_owner/")
+   public String getOwnerGraphBetweenDates(Model model, @RequestParam(name = "owner") String owner, @RequestParam(name = "startDate") int startDate, @RequestParam(name = "endDate") int endDate) {
+	   List<WasteData> waste = this.resourceWasteRepository.findByOwnerBetweenDates(owner, startDate, endDate);
+	   
+	   model.addAttribute("waste", waste);
+	   model.addAttribute("owner", owner);
+	   return "graph_of_owner";
+   }
+   
 }
