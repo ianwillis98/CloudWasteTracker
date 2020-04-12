@@ -14,8 +14,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class AnalyzeWastefulResourcesTask {
 
-    private static final long ONE_DAY_IN_MILLIS = 86400000;
-
     private static Logger logger = LogManager.getLogger();
 
     private CloudabilityClient client;
@@ -28,7 +26,8 @@ public class AnalyzeWastefulResourcesTask {
         this.resourceWasteRepository = resourceWasteRepository;
     }
 
-    @Scheduled(fixedRate = ONE_DAY_IN_MILLIS, initialDelay = ONE_DAY_IN_MILLIS / 2)
+    //everyday at 5am
+    @Scheduled(cron="0 0 5 * * ?")
     public void analyzeWastefulResources() {
         logger.log(Level.INFO, "Beginning AnalyzeWastefulResourcesTask");
 
@@ -44,8 +43,14 @@ public class AnalyzeWastefulResourcesTask {
     private void createAndSaveNewResourceWaste(Resource resource) {
         String resourceId = resource.getResourceId();
 
-        RightsizingModel rightsizingModel = this.client.fetchRightsizing(resourceId).getBody();
-        UtilizationModel utilizationModel = this.client.fetchUtilization(resourceId).getBody();
+        RightsizingModel rightsizingModel = null;
+        UtilizationModel utilizationModel = null;
+        try {
+            rightsizingModel = this.client.fetchRightsizing(resourceId).getBody();
+            utilizationModel = this.client.fetchUtilization(resourceId).getBody();
+        } catch (Exception e) {
+            return;
+        }
 
         if (rightsizingModel != null && rightsizingModel.results.size() > 0 && rightsizingModel.results.get(0).recommendations.size() > 0
                 && utilizationModel != null && utilizationModel.results.size() > 0) {
