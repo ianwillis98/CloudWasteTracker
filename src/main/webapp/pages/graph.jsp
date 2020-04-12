@@ -47,7 +47,7 @@
 </nav>
 <div class="container">
 		<div class="row">
-			<h2>Select Date Range</h2>
+			<h2>Select Start to End Date</h2>
 		</div>
 		<div class="row">
 	        <div class='col-sm-6'>
@@ -84,7 +84,7 @@
 		var edateString =' ';
 	    $(function () {
 	        $('#datepicker').datepicker({
-	            format: "mm/dd/yy",
+	            format: "dd/mm/yyyy",
 	            autoclose: true,
 	            todayHighlight: true,
 		        showOtherMonths: true,
@@ -97,7 +97,7 @@
 	    });
 	    $(function () {
 	        $('#datepicker2').datepicker({
-	            format: "mm/dd/yy",
+	            format: "dd/mm/yyyy",
 	            autoclose: true,
 	            todayHighlight: true,
 		        showOtherMonths: true,
@@ -137,7 +137,7 @@
 		    edateString = edate.getFullYear()+'-'+(edate.getMonth()+1)+'-'+ edate.getDate();
 				}
 			alert(sdateString+edateString);
-			<c:set var ="sd" value='${sdateString}'/>
+		
 			
 			
 		    }
@@ -152,13 +152,9 @@
 </c:forEach>
 
     <script>
-<<<<<<< HEAD
     
 		var x =[];
 		
-=======
-	var x =[];
->>>>>>> a0ec49b3261d75659aa0c05cb6709bb90930323d
         var yAmount =[];
        
         var yPercent = [];
@@ -182,9 +178,8 @@
         	  data: {
         	    labels: xlabels,
         	    datasets: [{
-        	      label: 'Wasted Spend ($)',
+        	      label: 'Amount Wasted',
         	      yAxisID: 'yAmount',
-        	      order: 2,
         	      data: yAmount,
         	      backgroundColor: 
                       'rgba(255, 99, 132, 0.2)'
@@ -194,9 +189,8 @@
                   ,
                   borderWidth: 1
         	    }, {
-        	      label: 'Wasted Spend (%)',
+        	      label: 'Percent Wasted',
         	      yAxisID: 'yPercent',
-        	      order: 3,
         	      data: yPercent,
         	      backgroundColor: 
                       'rgba(255, 255, 255, 0.0)'
@@ -207,9 +201,8 @@
                   borderWidth: 1
         	    }, 
         	    {
-          	      label: 'Total Spend ($)',
+          	      label: 'Total Amount Spent',
           	      yAxisID: 'yTotal',
-          	      order: 1,
           	      data: yTotal,
           	      backgroundColor: 
                         'rgba(128, 128, 128, 0.2)'
@@ -224,8 +217,7 @@
   				responsive: true,
   				title: {
   					display: true,
-  					fontSize: 30,
-  					text: 'Waste over Time for Resource ID: ' + ' ${resourceId}'
+  					text: 'Waste over Time for Resource ID: ' + ' ${resourceId}' + ' From: <start date> To: <end date>'
   				},
   				
   				hover: {

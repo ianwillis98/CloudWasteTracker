@@ -14,8 +14,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class AnalyzeWastefulResourcesTask {
 
-    private static final long ONE_DAY_IN_MILLIS = 86400000;
-
     private static Logger logger = LogManager.getLogger();
 
     private CloudabilityClient client;
