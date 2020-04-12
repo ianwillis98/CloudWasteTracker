@@ -32,5 +32,15 @@ public class GraphController {
         model.addAttribute("resourceId", resourceId);
         return "graph";
     }
+   
+   @GetMapping("/filtergraph/{resourceId}")
+   public String getGraph1(Model model, @PathVariable String resourceId) {
+      
+       List<ResourceWaste> waste = this.resourceWasteRepository.findByResourceIdGroupByDate(resourceId);
+
+       model.addAttribute("waste", waste);
+       model.addAttribute("resourceId", resourceId);
+       return "filtergraph";
+   }
 
 }
