@@ -1,4 +1,9 @@
+<%@page import = "java.io.*,java.util.*" %>
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
+
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -42,7 +47,7 @@
 </nav>
 <div class="container">
 		<div class="row">
-			<h2>Select Date Range</h2>
+			<h2>Select Start to End Date</h2>
 		</div>
 		<div class="row">
 	        <div class='col-sm-6'>
@@ -70,13 +75,16 @@
 		            </div>
 		        </form>
 	        </div>
+	        <input type ="submit" name="submitbutton" onclick = "myFunction()" value="filter"/>
 	    </div>
 	</div>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 	<script >
+		var sdateString =' ';
+		var edateString =' ';
 	    $(function () {
 	        $('#datepicker').datepicker({
-	            format: "mm/dd/yy",
+	            format: "dd/mm/yyyy",
 	            autoclose: true,
 	            todayHighlight: true,
 		        showOtherMonths: true,
@@ -89,7 +97,7 @@
 	    });
 	    $(function () {
 	        $('#datepicker2').datepicker({
-	            format: "mm/dd/yy",
+	            format: "dd/mm/yyyy",
 	            autoclose: true,
 	            todayHighlight: true,
 		        showOtherMonths: true,
@@ -101,6 +109,39 @@
 	        });
 	    });
 
+	    function myFunction(){
+			var sdate = $("#datepicker").datepicker("getDate");
+			if((sdate.getMonth()+1).toString().length<2&&sdate.getDate().toString().length<2){
+				sdateString = sdate.getFullYear()+'-0'+(sdate.getMonth()+1)+'-0'+ sdate.getDate();
+				}
+			
+			else if(sdate.getDate().toString().length<2){
+				sdateString = sdate.getFullYear()+'-'+(sdate.getMonth()+1)+'-0'+ sdate.getDate();
+				}
+			else if ((sdate.getMonth()+1).toString().length<2){
+				sdateString = sdate.getFullYear()+'-0'+(sdate.getMonth()+1)+'-'+ sdate.getDate();
+				}else{
+		    sdateString = sdate.getFullYear()+'-'+(sdate.getMonth()+1)+'-'+ sdate.getDate();
+				}
+			var edate = $("#datepicker2").datepicker("getDate");
+			if((edate.getMonth()+1).toString().length<2&&edate.getDate().toString().length<2){
+				edateString = edate.getFullYear()+'-0'+(edate.getMonth()+1)+'-0'+ edate.getDate();
+				}
+			
+			else if(edate.getDate().toString().length<2){
+				edateString = edate.getFullYear()+'-'+(edate.getMonth()+1)+'-0'+ edate.getDate();
+				}
+			else if ((edate.getMonth()+1).toString().length<2){
+				edateString = edate.getFullYear()+'-0'+(edate.getMonth()+1)+'-'+ edate.getDate();
+				}else{
+		    edateString = edate.getFullYear()+'-'+(edate.getMonth()+1)+'-'+ edate.getDate();
+				}
+			alert(sdateString+edateString);
+		
+			
+			
+		    }
+	    
 	</script>
 	
 <div class="container">
@@ -111,10 +152,15 @@
 </c:forEach>
 
     <script>
-	var x =[];
+    
+		var x =[];
+		
         var yAmount =[];
+       
         var yPercent = [];
+       
         var yTotal = [];
+       
         var t = null;
         <c:forEach var="data" items="${waste}" varStatus="loop">
         	yPercent[${loop.index}] = ${data.recommendationSavingsPct};
@@ -122,8 +168,9 @@
             yTotal[${loop.index}] = ${data.totalSpend};
          
             x[${loop.index}] =  "${fn:substring(data.createdAt, 5, 7)}" + "/" + "${fn:substring(data.createdAt, 8, 10)}" + "/" + "${fn:substring(data.createdAt, 2, 4)}";
-         </c:forEach>
-        
+
+            </c:forEach>   
+            
         const ctx = document.getElementById('chart').getContext('2d');
         const xlabels = x;
         const myChart = new Chart(ctx, {
@@ -131,9 +178,8 @@
         	  data: {
         	    labels: xlabels,
         	    datasets: [{
-        	      label: 'Wasted Spend ($)',
+        	      label: 'Amount Wasted',
         	      yAxisID: 'yAmount',
-        	      order: 2,
         	      data: yAmount,
         	      backgroundColor: 
                       'rgba(255, 99, 132, 0.2)'
@@ -143,9 +189,8 @@
                   ,
                   borderWidth: 1
         	    }, {
-        	      label: 'Wasted Spend (%)',
+        	      label: 'Percent Wasted',
         	      yAxisID: 'yPercent',
-        	      order: 3,
         	      data: yPercent,
         	      backgroundColor: 
                       'rgba(255, 255, 255, 0.0)'
@@ -156,9 +201,8 @@
                   borderWidth: 1
         	    }, 
         	    {
-          	      label: 'Total Spend ($)',
+          	      label: 'Total Amount Spent',
           	      yAxisID: 'yTotal',
-          	      order: 1,
           	      data: yTotal,
           	      backgroundColor: 
                         'rgba(128, 128, 128, 0.2)'
@@ -173,8 +217,7 @@
   				responsive: true,
   				title: {
   					display: true,
-  					fontSize: 30,
-  					text: 'Waste over Time for Resource ID: ' + ' ${resourceId}'
+  					text: 'Waste over Time for Resource ID: ' + ' ${resourceId}' + ' From: <start date> To: <end date>'
   				},
   				
   				hover: {
