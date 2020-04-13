@@ -68,7 +68,7 @@
 		            </div>
 		        </form>
 	        </div>
-	        <input type ="submit" name="submitbutton" onclick = "myFunction()" value="filter"/>
+	        <input style="font-size:160%;color:white;text-align:center;background-color:black;" type ="submit" name="submitbutton" onclick = "myFunction()" value="Apply Selected Date Range"/>
 	    </div>
 	</div>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
