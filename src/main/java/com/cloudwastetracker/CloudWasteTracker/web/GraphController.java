@@ -36,11 +36,28 @@ public class GraphController {
         return "graph";
     }
    
+   @GetMapping("/graph/{resourceId}/{startDate}/{endDate}")
+   public String getGraph1(Model model, @PathVariable String resourceId,@PathVariable int startDate, @PathVariable int endDate){
+   	List <ResourceWaste> waste = this.resourceWasteRepository.findByResourceIdAndDate(resourceId,startDate, endDate);
+   	model.addAttribute("waste", waste);
+    model.addAttribute("resourceId", resourceId);
+    model.addAttribute("startDate", startDate);
+    model.addAttribute("endDate", endDate);
+    return "filtergraph";
+   }
 
 
-
+  // @GetMapping("/graph_of_app/{appName}")
+   //public String getAppGraph(Model model, @PathVariable String appName) {
+	 //  List<WasteData> waste = this.resourceWasteRepository.findByAppName(appName);
+	   
+	   //model.addAttribute("waste", waste);
+	   //model.addAttribute("appName", appName);
+	   //return "graph_of_app";
+   //}
+   
    @GetMapping("/graph_of_app/{appName}")
-   public String getAppGraph(Model model, @PathVariable String appName) {
+   public String getAppGraph1(Model model, @PathVariable String appName) {
 	   List<WasteData> waste = this.resourceWasteRepository.findByAppName(appName);
 	   
 	   model.addAttribute("waste", waste);
