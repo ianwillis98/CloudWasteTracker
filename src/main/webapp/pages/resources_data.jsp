@@ -101,7 +101,7 @@
 <div>
 <p>
 <center>
-<button style="font-size:100%;color:white;text-align:center;background-color:black;" onclick="document.location = '/graphResource/${resourceId}'">Return to graph for Resource ${resourceId}</button>
+<button style="font-size:100%;color:white;text-align:center;background-color:black;" onclick="document.location = '/graph_of_resource/${resourceId}'">Return to graph for Resource ${resourceId}</button>
 </center>
 </p>
 </div>

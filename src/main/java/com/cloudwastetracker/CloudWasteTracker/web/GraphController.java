@@ -31,7 +31,7 @@ public class GraphController {
 
         model.addAttribute("waste", waste);
         model.addAttribute("resourceId", resourceId);
-        return "graph";
+        return "graph_of_resource";
     }
    
    @GetMapping("/graph/{resourceId}/{startDate}/{endDate}")
@@ -77,7 +77,7 @@ public class GraphController {
 	   
 	   model.addAttribute("waste", waste);
 	   model.addAttribute("resourceId", resourceId);
-	   return "graph";
+	   return "graph_of_resource";
    }
    
    @GetMapping("/graph_of_app/")
