@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,33 +34,32 @@
     </div>
 </nav>
 <div class="container">
-    <h1 class="mt-5">Resources Data</h1>
+    <h1 class="mt-5">Recommendation Data for Resource ${resourceId}</h1>
     <table id = "collection" class="table table-striped table-hover table-sm table-responsive" style="max-width: 100%">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">id</th>
-            <th scope="col">createdAt</th>
-            <th scope="col">resourceId</th>
-            <th scope="col">nodeType</th>
-            <th scope="col">unitPrice</th>
-            <th scope="col">totalSpend</th>
-            <th scope="col">cpuCapacity</th>
-            <th scope="col">memoryCapacity</th>
-            <th scope="col">networkCapacity</th>
-            <th scope="col">hoursRunning</th>
-            <th scope="col">idle</th>
-            <th scope="col">recommendationAction</th>
-            <th scope="col">recommendationNodeType</th>
-            <th scope="col">recommendationCpuCapacity</th>
-            <th scope="col">recommendationMemoryCapacity</th>
-            <th scope="col">recommendationNetworkCapacity</th>
-            <th scope="col">recommendationUnitPrice</th>
-            <th scope="col">recommendationRisk</th>
-            <th scope="col">recommendationSavings</th>
-            <th scope="col">recommendationSavingsPct</th>
-            <th scope="col">powerOnAt</th>
-            <th scope="col">shutdownAt</th>
+            <th scope="col">ID</th>
+            <th scope="col">Date</th>
+            <th scope="col">Total Spend($)</th>
+            <th scope="col">Hours Running</th>
+            <th scope="col">Idle(%)</th>
+            <th scope="col" style="background-color:powderblue">Recommended Action</th>
+            <th scope="col" style="background-color:powderblue">Recommended Savings($)</th>
+            <th scope="col" style="background-color:powderblue">Recommended Savings(%)</th>
+            <th scope="col">Node Type</th>
+            <th scope="col" style="background-color:powderblue">Recommended Node Type</th>
+            <th scope="col">Unit Price($)</th>
+            <th scope="col" style="background-color:powderblue">Recommended Unit Price($)</th>
+            <th scope="col">CPU Capacity</th>
+            <th scope="col" style="background-color:powderblue">Recommended CPU Capacity</th>
+            <th scope="col">Memory Capacity</th>
+            <th scope="col" style="background-color:powderblue">Recommended Memory Capacity</th>
+            <th scope="col">Network Capacity</th>
+            <th scope="col" style="background-color:powderblue">Recommended Network Capacity</th>
+            <th scope="col">Risk of Recommendation</th>
+            <th scope="col">Power On At</th>
+            <th scope="col">Shut Down At</th>
         </tr>
         </thead>
         <tbody>
@@ -67,25 +67,24 @@
             <tr>
                 <td scope="row">${loop.index + 1}</td>
                 <td>${data.id}</td>
-                <td>${data.createdAt}</td>
-                <td>${data.resource.resourceId}</td>
-                <td>${data.nodeType}</td>
-                <td>${data.unitPrice}</td>
+                <td>${fn:substring(data.createdAt, 5, 7)}/${fn:substring(data.createdAt, 8, 10)}/${fn:substring(data.createdAt, 2, 4)}</td>
                 <td>${data.totalSpend}</td>
-                <td>${data.cpuCapacity}</td>
-                <td>${data.memoryCapacity}</td>
-                <td>${data.networkCapacity}</td>
                 <td>${data.hoursRunning}</td>
                 <td>${data.idle}</td>
-                <td>${data.recommendationAction}</td>
-                <td>${data.recommendationNodeType}</td>
-                <td>${data.recommendationCpuCapacity}</td>
-                <td>${data.recommendationMemoryCapacity}</td>
-                <td>${data.recommendationNetworkCapacity}</td>
-                <td>${data.recommendationUnitPrice}</td>
+                <td style="border:4px solid powderblue">${data.recommendationAction}</td>
+                <td style="border:4px solid powderblue">${data.recommendationSavings}</td>
+                <td style="border:4px solid powderblue">${data.recommendationSavingsPct}</td>
+                <td>${data.nodeType}</td>
+                <td style="border:4px solid powderblue">${data.recommendationNodeType}</td>
+                <td>${data.unitPrice}</td>
+                <td style="border:4px solid powderblue">${data.recommendationUnitPrice}</td>
+                <td>${data.cpuCapacity}</td>
+                <td style="border:4px solid powderblue">${data.recommendationCpuCapacity}</td>
+                <td>${data.memoryCapacity}</td>
+                <td style="border:4px solid powderblue">${data.recommendationMemoryCapacity}</td>
+                <td>${data.networkCapacity}</td>
+                <td style="border:4px solid powderblue">${data.recommendationNetworkCapacity}</td>
                 <td>${data.recommendationRisk}</td>
-                <td>${data.recommendationSavings}</td>
-                <td>${data.recommendationSavingsPct}</td>
                 <td>${data.powerOnAt}</td>
                 <td>${data.shutdownAt}</td>
             </tr>

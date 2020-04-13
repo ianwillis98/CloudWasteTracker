@@ -128,7 +128,7 @@
         	  data: {
         	    labels: xlabels,
         	    datasets: [{
-        	      label: 'Wasted Spend (%)',
+        	      label: 'Wasted Spend ($)',
         	      yAxisID: 'yAmount',
         	      order: 2,
         	      data: yAmount,
