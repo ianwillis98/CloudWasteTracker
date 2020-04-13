@@ -13,7 +13,7 @@ public interface ResourceWasteRepository extends JpaRepository<ResourceWaste, Lo
     @Query(nativeQuery = true, value = "SELECT * FROM resource_waste where resource_id = ?1 group by date(created_at)")
     public List<ResourceWaste> findByResourceIdGroupByDate(String rid);
 
-    @Query(value = "SELECT * FROM resource_waste WHERE resource_id = :id AND created_at BETWEEN from_unixtime(:startDate) AND from_unixtime(:endDate) order by created_at ASC", nativeQuery = true)
+    @Query(value = "SELECT * FROM resource_waste WHERE resource_id = :id AND created_at BETWEEN from_unixtime(:startDate) AND from_unixtime(:endDate) group by date(created_at) order by created_at ASC", nativeQuery = true)
     public List<ResourceWaste> findByResourceIdAndDate(@Param("id")String resourceID, @Param("startDate")int start, @Param("endDate")int end);
     
     @Query(value = "select created_at as 'date', sum(total_spend) as 'totalSpent', sum(recommendation_savings) as 'totalWaste' from resource_waste where resource_id in "
