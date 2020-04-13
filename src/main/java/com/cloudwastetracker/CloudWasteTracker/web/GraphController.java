@@ -1,12 +1,10 @@
 package com.cloudwastetracker.CloudWasteTracker.web;
 
-import com.cloudwastetracker.CloudWasteTracker.resources.Resource;
 import com.cloudwastetracker.CloudWasteTracker.resources.ResourceRepository;
 import com.cloudwastetracker.CloudWasteTracker.waste.ResourceWaste;
 import com.cloudwastetracker.CloudWasteTracker.waste.ResourceWasteRepository;
 import com.cloudwastetracker.CloudWasteTracker.waste.WasteData;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,14 +24,14 @@ public class GraphController {
         this.resourceWasteRepository = resourceWasteRepository;
     }
 
-   @GetMapping("/graph/{resourceId}")
+   @GetMapping("/graph_of_resource/{resourceId}")
     public String getGraph(Model model, @PathVariable String resourceId) {
        
         List<ResourceWaste> waste = this.resourceWasteRepository.findByResourceIdGroupByDate(resourceId);
 
         model.addAttribute("waste", waste);
         model.addAttribute("resourceId", resourceId);
-        return "graph";
+        return "graph_of_resource";
     }
    
    @GetMapping("/graph/{resourceId}/{startDate}/{endDate}")
@@ -46,7 +44,6 @@ public class GraphController {
     return "filtergraph";
    }
 
-   
    @GetMapping("/graph_of_app/{appName}")
    public String getAppGraph1(Model model, @PathVariable String appName) {
 	   List<WasteData> waste = this.resourceWasteRepository.findByAppName(appName);
@@ -56,13 +53,13 @@ public class GraphController {
 	   return "graph_of_app";
    }
    
-   @GetMapping("/graph_of_department/{dept}")
+   @GetMapping("/graph_of_dept/{dept}")
    public String getDeptGraph(Model model, @PathVariable String dept) {
 	   List<WasteData> waste = this.resourceWasteRepository.findByDepartment(dept);
 	   
 	   model.addAttribute("waste", waste);
 	   model.addAttribute("dept", dept);
-	   return "graph_of_dept";
+	   return "graph_of_department";
    }
    
    @GetMapping("/graph_of_owner/{owner}")
@@ -98,7 +95,7 @@ public class GraphController {
 	   
 	   model.addAttribute("waste", waste);
 	   model.addAttribute("dept", dept);
-	   return "graph_of_dept";
+	   return "graph_of_department";
    }
    
    @GetMapping("/graph_of_owner/")
@@ -109,6 +106,4 @@ public class GraphController {
 	   model.addAttribute("owner", owner);
 	   return "graph_of_owner";
    }
-   
-
 }

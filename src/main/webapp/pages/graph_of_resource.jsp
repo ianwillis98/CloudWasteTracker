@@ -1,9 +1,4 @@
-<%@page import = "java.io.*,java.util.*" %>
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-
-
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -18,9 +13,8 @@
     <title>Cloud Waste Tracker</title>
     <link rel="shortcut icon" href="pages/favicon.ico" type="image/x-icon"/>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     
 </head>
@@ -54,12 +48,11 @@
 	        	<form>
 		            <div class="form-group">
 		                <div class='input-group date' id='datepicker'>
-		                    <input type='text' class="form-control"  />
+		                    <input type='text' class="form-control" />
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
 		                </div>
-		                
 		            </div>
 		        </form>
 	        </div>
@@ -67,7 +60,7 @@
 	        	<form>
 		            <div class="form-group">
 		                <div class='input-group date' id='datepicker2'>
-		                    <input type='text' class="form-control"/>
+		                    <input type='text' class="form-control" />
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
@@ -75,17 +68,14 @@
 		            </div>
 		        </form>
 	        </div>
-	        <input type ="submit" name="submitbutton" onclick = "myFunction()" value="filter"/>
 	    </div>
 	</div>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 	<script >
-		var sdateString =' ';
-		var edateString =' ';
 	    $(function () {
 	        $('#datepicker').datepicker({
-	            format: "mm/dd/yyyy",
-				autoclose: true,
+	            format: "mm/dd/yy",
+	            autoclose: true,
 	            todayHighlight: true,
 		        showOtherMonths: true,
 		        selectOtherMonths: true,
@@ -97,7 +87,7 @@
 	    });
 	    $(function () {
 	        $('#datepicker2').datepicker({
-	            format: "mm/dd/yyyy",
+	            format: "mm/dd/yy",
 	            autoclose: true,
 	            todayHighlight: true,
 		        showOtherMonths: true,
@@ -108,22 +98,6 @@
 		        orientation: "button"
 	        });
 	    });
-
-	    function myFunction(){
-			var sdate = $("#datepicker").datepicker("getDate");
-		
-			var edate = $("#datepicker2").datepicker("getDate");
-		
-			
-
-			let sd = Math.floor(sdate.getTime()/1000.0).toString();
-			let ed = (Math.floor(edate.getTime()/1000.0)+23*3600+59*61+1).toString();
-			let site = "/graph_of_resource/?id=" +"${resourceId}&startDate="+sd+"&endDate="+ed;
-			location.replace(site);
-			
-			
-		    }
-	    
 	</script>
 	
 <div class="container">
@@ -136,13 +110,9 @@
     <script>
     	var list = "";
 		var x =[];
-		
         var yAmount =[];
-       
         var yPercent = [];
-       
         var yTotal = [];
-       
         var t = null;
         <c:forEach var="data" items="${waste}" varStatus="loop">
         	yPercent[${loop.index}] = ${data.recommendationSavingsPct};
@@ -150,9 +120,8 @@
             yTotal[${loop.index}] = ${data.totalSpend};
          
             x[${loop.index}] =  "${fn:substring(data.createdAt, 5, 7)}" + "/" + "${fn:substring(data.createdAt, 8, 10)}" + "/" + "${fn:substring(data.createdAt, 2, 4)}";
-
-            </c:forEach>   
-            
+         </c:forEach>
+        
         const ctx = document.getElementById('chart').getContext('2d');
         const xlabels = x;
         const myChart = new Chart(ctx, {
