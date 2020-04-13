@@ -62,7 +62,7 @@
                 <td>${resource.accountName}</td>
                 <td><a href="/graphDepartment/${resource.department}">${resource.department}</a></td>
                 <td>${resource.resourceName}</td>
-                <td>${resource.resourceOwner}</td>
+                <td><a href="/graphOwner/${resource.resourceOwner}">${resource.resourceOwner}</a></td>
                 <td>${resource.itemDescription}</td>
                 <td>${resource.disbursementCode}</td>
                 <td>${resource.environment}</td>

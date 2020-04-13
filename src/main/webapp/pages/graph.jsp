@@ -108,6 +108,7 @@
 </c:forEach>
 
     <script>
+    	var list = "";
 		var x =[];
         var yAmount =[];
         var yPercent = [];
@@ -240,7 +241,7 @@
 <div>
 <p>
 <center>
-<button style="font-size:160%;color:white;text-align:center;background-color:black;" onclick="document.location = '/resources'">Return to List of Resources ${resourceId}</button>
+<button style="font-size:160%;color:white;text-align:center;background-color:black;" onclick="document.location = '/resources'">Return to List of Resources${list}</button>
 </center>
 </p>
 </div>
