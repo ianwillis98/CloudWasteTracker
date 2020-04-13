@@ -46,15 +46,6 @@ public class GraphController {
     return "filtergraph";
    }
 
-
-  // @GetMapping("/graph_of_app/{appName}")
-   //public String getAppGraph(Model model, @PathVariable String appName) {
-	 //  List<WasteData> waste = this.resourceWasteRepository.findByAppName(appName);
-	   
-	   //model.addAttribute("waste", waste);
-	   //model.addAttribute("appName", appName);
-	   //return "graph_of_app";
-   //}
    
    @GetMapping("/graph_of_app/{appName}")
    public String getAppGraph1(Model model, @PathVariable String appName) {

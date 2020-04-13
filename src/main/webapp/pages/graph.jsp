@@ -84,7 +84,7 @@
 		var edateString =' ';
 	    $(function () {
 	        $('#datepicker').datepicker({
-	            format: "dd/mm/yyyy",
+	            format: "mm/dd/yyyy",
 	            autoclose: true,
 	            todayHighlight: true,
 		        showOtherMonths: true,
@@ -97,7 +97,7 @@
 	    });
 	    $(function () {
 	        $('#datepicker2').datepicker({
-	            format: "dd/mm/yyyy",
+	            format: "mm/dd/yyyy",
 	            autoclose: true,
 	            todayHighlight: true,
 		        showOtherMonths: true,
@@ -111,33 +111,15 @@
 
 	    function myFunction(){
 			var sdate = $("#datepicker").datepicker("getDate");
-			if((sdate.getMonth()+1).toString().length<2&&sdate.getDate().toString().length<2){
-				sdateString = sdate.getFullYear()+'-0'+(sdate.getMonth()+1)+'-0'+ sdate.getDate();
-				}
-			
-			else if(sdate.getDate().toString().length<2){
-				sdateString = sdate.getFullYear()+'-'+(sdate.getMonth()+1)+'-0'+ sdate.getDate();
-				}
-			else if ((sdate.getMonth()+1).toString().length<2){
-				sdateString = sdate.getFullYear()+'-0'+(sdate.getMonth()+1)+'-'+ sdate.getDate();
-				}else{
-		    sdateString = sdate.getFullYear()+'-'+(sdate.getMonth()+1)+'-'+ sdate.getDate();
-				}
-			var edate = $("#datepicker2").datepicker("getDate");
-			if((edate.getMonth()+1).toString().length<2&&edate.getDate().toString().length<2){
-				edateString = edate.getFullYear()+'-0'+(edate.getMonth()+1)+'-0'+ edate.getDate();
-				}
-			
-			else if(edate.getDate().toString().length<2){
-				edateString = edate.getFullYear()+'-'+(edate.getMonth()+1)+'-0'+ edate.getDate();
-				}
-			else if ((edate.getMonth()+1).toString().length<2){
-				edateString = edate.getFullYear()+'-0'+(edate.getMonth()+1)+'-'+ edate.getDate();
-				}else{
-		    edateString = edate.getFullYear()+'-'+(edate.getMonth()+1)+'-'+ edate.getDate();
-				}
-			alert(sdateString+edateString);
 		
+			var edate = $("#datepicker2").datepicker("getDate");
+		
+			
+
+			let sd = Math.floor(sdate.getTime()/1000.0).toString();
+			let ed = (Math.floor(edate.getTime()/1000.0)+23*3600+59*61+1).toString();
+			let site = "/graph_of_resource/?id=" +"${resourceId}&startDate="+sd+"&endDate="+ed;
+			location.replace(site);
 			
 			
 		    }
