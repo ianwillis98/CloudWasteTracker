@@ -25,7 +25,7 @@ public class GraphController {
         this.resourceWasteRepository = resourceWasteRepository;
     }
 
-   @GetMapping("/graph/{resourceId}")
+   @GetMapping("/graphResource/{resourceId}")
     public String getGraph(Model model, @PathVariable String resourceId) {
        
         List<ResourceWaste> waste = this.resourceWasteRepository.findByResourceIdGroupByDate(resourceId);
@@ -35,7 +35,7 @@ public class GraphController {
         return "graph";
     }
    
-   @GetMapping("/graph_of_app/{appName}")
+   @GetMapping("/graphApplication/{appName}")
    public String getAppGraph(Model model, @PathVariable String appName) {
 	   List<WasteData> waste = this.resourceWasteRepository.findByAppName(appName);
 	   
@@ -44,13 +44,21 @@ public class GraphController {
 	   return "graph_of_app";
    }
    
-   @GetMapping("/graph_of_department/{dept}")
+   @GetMapping("/graphDepartment/{dept}")
    public String getDeptGraph(Model model, @PathVariable String dept) {
 	   List<WasteData> waste = this.resourceWasteRepository.findByDepartment(dept);
 	   
 	   model.addAttribute("waste", waste);
 	   model.addAttribute("dept", dept);
-	   return "graph_of_dept";
+	   return "graph_of_department";
    }
 
+   @GetMapping("/graphOwner/{owner}")
+   public String getOwnerGraph(Model model, @PathVariable String owner) {
+	   List<WasteData> waste = this.resourceWasteRepository.findByOwner(owner);
+	   
+	   model.addAttribute("waste", waste);
+	   model.addAttribute("owner", owner);
+	   return "graph_of_owner";
+   }
 }
