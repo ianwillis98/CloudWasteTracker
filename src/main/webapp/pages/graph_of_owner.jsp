@@ -130,6 +130,7 @@
         	    datasets: [{
         	      label: 'Wasted Spend (%)',
         	      yAxisID: 'yAmount',
+        	      order: 2,
         	      data: yAmount,
         	      backgroundColor: 
                       'rgba(255, 99, 132, 0.2)'
@@ -141,6 +142,7 @@
         	    }, {
         	      label: 'Wasted Spend (%)',
         	      yAxisID: 'yPercent',
+        	      order: 3,
         	      data: yPercent,
         	      backgroundColor: 
                       'rgba(255, 255, 255, 0.0)'
@@ -153,6 +155,7 @@
         	    {
           	      label: 'Total Spend ($)',
           	      yAxisID: 'yTotal',
+          	      order: 1,
           	      data: yTotal,
           	      backgroundColor: 
                         'rgba(128, 128, 128, 0.2)'
@@ -167,7 +170,7 @@
   				responsive: true,
   				title: {
   					display: true,
-  					text: 'Waste over Time for Department: ' + ' ${dept}',
+  					text: 'Waste over Time for Owner: ' + ' ${owner}',
   					fontSize: 30
   				},
   				
