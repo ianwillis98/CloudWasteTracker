@@ -54,15 +54,15 @@
         <c:forEach var="resource" items="${resources}" varStatus="loop">
             <tr>
                 <td scope="row">${loop.index + 1}</td>
-                <td><a href="/resources/${resource.resourceId}">${resource.resourceId}</a></td>
+                <td><a href="/graphResource/${resource.resourceId}">${resource.resourceId}</a></td>
                 <td>${resource.applicationId}</td>
-                <td>${resource.applicationName}</td>
+                <td><a href="/graphApplication/${resource.applicationName}">${resource.applicationName}</a></td>
 <%--                <td>${resource.applicationOwner}</td>--%>
                 <td>${resource.accountId}</td>
                 <td>${resource.accountName}</td>
-                <td>${resource.department}</td>
+                <td><a href="/graphDepartment/${resource.department}">${resource.department}</a></td>
                 <td>${resource.resourceName}</td>
-                <td>${resource.resourceOwner}</td>
+                <td><a href="/graphOwner/${resource.resourceOwner}">${resource.resourceOwner}</a></td>
                 <td>${resource.itemDescription}</td>
                 <td>${resource.disbursementCode}</td>
                 <td>${resource.environment}</td>

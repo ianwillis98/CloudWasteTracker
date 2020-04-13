@@ -1,9 +1,4 @@
-<%@page import = "java.io.*,java.util.*" %>
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-
-
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -18,9 +13,8 @@
     <title>Cloud Waste Tracker</title>
     <link rel="shortcut icon" href="pages/favicon.ico" type="image/x-icon"/>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     
 </head>
@@ -54,12 +48,11 @@
 	        	<form>
 		            <div class="form-group">
 		                <div class='input-group date' id='datepicker'>
-		                    <input type='text' class="form-control"  />
+		                    <input type='text' class="form-control" />
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
 		                </div>
-		                
 		            </div>
 		        </form>
 	        </div>
@@ -67,7 +60,7 @@
 	        	<form>
 		            <div class="form-group">
 		                <div class='input-group date' id='datepicker2'>
-		                    <input type='text' class="form-control"/>
+		                    <input type='text' class="form-control" />
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
@@ -75,13 +68,10 @@
 		            </div>
 		        </form>
 	        </div>
-	        <input type ="submit" name="submitbutton" onclick = "myFunction()" value="filter"/>
 	    </div>
 	</div>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 	<script >
-		var sdateString =' ';
-		var edateString =' ';
 	    $(function () {
 	        $('#datepicker').datepicker({
 	            format: "mm/dd/yy",
@@ -108,40 +98,6 @@
 		        orientation: "button"
 	        });
 	    });
-
-	    function myFunction(){
-			var sdate = $("#datepicker").datepicker("getDate");
-			if((sdate.getMonth()+1).toString().length<2&&sdate.getDate().toString().length<2){
-				sdateString = sdate.getFullYear()+'-0'+(sdate.getMonth()+1)+'-0'+ sdate.getDate();
-				}
-			
-			else if(sdate.getDate().toString().length<2){
-				sdateString = sdate.getFullYear()+'-'+(sdate.getMonth()+1)+'-0'+ sdate.getDate();
-				}
-			else if ((sdate.getMonth()+1).toString().length<2){
-				sdateString = sdate.getFullYear()+'-0'+(sdate.getMonth()+1)+'-'+ sdate.getDate();
-				}else{
-		    sdateString = sdate.getFullYear()+'-'+(sdate.getMonth()+1)+'-'+ sdate.getDate();
-				}
-			var edate = $("#datepicker2").datepicker("getDate");
-			if((edate.getMonth()+1).toString().length<2&&edate.getDate().toString().length<2){
-				edateString = edate.getFullYear()+'-0'+(edate.getMonth()+1)+'-0'+ edate.getDate();
-				}
-			
-			else if(edate.getDate().toString().length<2){
-				edateString = edate.getFullYear()+'-'+(edate.getMonth()+1)+'-0'+ edate.getDate();
-				}
-			else if ((edate.getMonth()+1).toString().length<2){
-				edateString = edate.getFullYear()+'-0'+(edate.getMonth()+1)+'-'+ edate.getDate();
-				}else{
-		    edateString = edate.getFullYear()+'-'+(edate.getMonth()+1)+'-'+ edate.getDate();
-				}
-			alert(sdateString+edateString);
-		
-			
-			
-		    }
-	    
 	</script>
 	
 <div class="container">
@@ -152,29 +108,19 @@
 </c:forEach>
 
     <script>
-<<<<<<< HEAD
-    
-=======
-    	var list = "";
->>>>>>> origin/graphBy
 		var x =[];
-		
         var yAmount =[];
-       
         var yPercent = [];
-       
         var yTotal = [];
-       
         var t = null;
         <c:forEach var="data" items="${waste}" varStatus="loop">
-        	yPercent[${loop.index}] = ${data.recommendationSavingsPct};
-            yAmount[${loop.index}] =  ${data.recommendationSavings};
-            yTotal[${loop.index}] = ${data.totalSpend};
+        	yPercent[${loop.index}] = ${data.getWastePercent()};
+            yAmount[${loop.index}] =  ${Math.floor(data.getTotalWaste()*100)/100};
+            yTotal[${loop.index}] = ${Math.floor(data.getTotalSpent()*100)/100};
          
-            x[${loop.index}] =  "${fn:substring(data.createdAt, 5, 7)}" + "/" + "${fn:substring(data.createdAt, 8, 10)}" + "/" + "${fn:substring(data.createdAt, 2, 4)}";
-
-            </c:forEach>   
-            
+            x[${loop.index}] =  "${fn:substring(data.getDate(), 5, 7)}" + "/" + "${fn:substring(data.getDate(), 8, 10)}" + "/" + "${fn:substring(data.getDate(), 2, 4)}";
+         </c:forEach>
+        
         const ctx = document.getElementById('chart').getContext('2d');
         const xlabels = x;
         const myChart = new Chart(ctx, {
@@ -224,7 +170,7 @@
   				responsive: true,
   				title: {
   					display: true,
-  					text: 'Waste over Time for Resource ID: ' + ' ${resourceId}',
+  					text: 'Waste over Time for Application Name: ' + ' ${appName}',
   					fontSize: 30
   				},
   				
@@ -286,15 +232,7 @@
 <div>
 <p>
 <center>
-<button style="font-size:160%;color:white;text-align:center;background-color:black;" onclick="document.location = '/resources/${resourceId}'">Rightsizing Data for Resource ${resourceId}</button>
-</center>
-</p>
-</div>
-
-<div>
-<p>
-<center>
-<button style="font-size:160%;color:white;text-align:center;background-color:black;" onclick="document.location = '/resources'">Return to List of Resources${list}</button>
+<button style="font-size:160%;color:white;text-align:center;background-color:black;" onclick="document.location = '/resources'">Return to List of Resources ${resourceId}</button>
 </center>
 </p>
 </div>
