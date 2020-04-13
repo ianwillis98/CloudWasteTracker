@@ -68,13 +68,16 @@
 		            </div>
 		        </form>
 	        </div>
+	         <input type ="submit" name="submitbutton" onclick = "myFunction()" value="filter"/>
 	    </div>
 	</div>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 	<script >
+	var sdateString =' ';
+	var edateString =' ';
 	    $(function () {
 	        $('#datepicker').datepicker({
-	            format: "mm/dd/yy",
+	            format: "mm/dd/yyyy",
 	            autoclose: true,
 	            todayHighlight: true,
 		        showOtherMonths: true,
@@ -87,7 +90,7 @@
 	    });
 	    $(function () {
 	        $('#datepicker2').datepicker({
-	            format: "mm/dd/yy",
+	            format: "mm/dd/yyyy",
 	            autoclose: true,
 	            todayHighlight: true,
 		        showOtherMonths: true,
@@ -98,6 +101,21 @@
 		        orientation: "button"
 	        });
 	    });
+
+	    function myFunction(){
+			var sdate = $("#datepicker").datepicker("getDate");
+		
+			var edate = $("#datepicker2").datepicker("getDate");
+		
+			
+
+			let sd = Math.floor(sdate.getTime()/1000.0-4*3600).toString();
+			let ed = (Math.floor(edate.getTime()/1000.0)+20*3600).toString();
+			let site = "/graph_of_resource/?id=" +"${resourceId}&startDate="+sd+"&endDate="+ed;
+			location.replace(site);
+			
+			
+		    }
 	</script>
 	
 <div class="container">
