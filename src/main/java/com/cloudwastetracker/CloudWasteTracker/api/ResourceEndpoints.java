@@ -1,38 +1,39 @@
-package com.cloudwastetracker.CloudWasteTracker.resources;
+package com.cloudwastetracker.CloudWasteTracker.api;
 
 import com.cloudwastetracker.CloudWasteTracker.cloudability.CloudabilityClient;
+import com.cloudwastetracker.CloudWasteTracker.resources.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ResourceController {
+public class ResourceEndpoints {
 
     private CloudabilityClient client;
     private ResourceRepository resourcesRepository;
 
-    public ResourceController(CloudabilityClient client, ResourceRepository resourcesRepository) {
+    public ResourceEndpoints(CloudabilityClient client, ResourceRepository resourcesRepository) {
         this.client = client;
         this.resourcesRepository = resourcesRepository;
     }
 
-//    @GetMapping("/resource/{resourceId}")
-//    public ResourceModel fetchResources(@PathVariable("resourceId") String resourceId) {
-//        return client.fetchResource(resourceId).getBody();
-//    }
-
-    @GetMapping("/resource/{resourceId}")
+    @GetMapping("/api/resource/{resourceId}")
     public Resource fetchResources(@PathVariable("resourceId") String resourceId) {
         return resourcesRepository.findById(resourceId).get();
     }
 
-    @GetMapping("/resources-needing-rightsizing")
+    @GetMapping("/api/cloudability/resource/{resourceId}")
+    public ResourceModel fetchCloudabilityResources(@PathVariable("resourceId") String resourceId) {
+        return client.fetchResource(resourceId).getBody();
+    }
+
+    @GetMapping("/api/cloudability/resources-needing-rightsizing")
     public ResourcesNeedingRightsizingModel fetchResourcesNeedingRightsizing() {
         return this.client.fetchResourcesNeedingRightsizing().getBody();
     }
 
-    @GetMapping("/resources-running-overnight")
+    @GetMapping("/api/cloudability/resources-running-overnight")
     public ResourcesRunningOvernightModel fetchResourcesRunningOvernight() {
         return client.fetchResourcesRunningOvernight().getBody();
     }
