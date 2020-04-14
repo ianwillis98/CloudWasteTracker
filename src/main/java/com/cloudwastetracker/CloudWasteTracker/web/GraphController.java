@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
+import java.time.ZoneOffset;
 import java.util.List;
 
 @Controller
@@ -24,10 +26,13 @@ public class GraphController {
         this.resourceWasteRepository = resourceWasteRepository;
     }
 
-   @GetMapping("/graph_of_resource/{resourceId}")
+    @GetMapping("/graph_of_resource/{resourceId}")
     public String getGraph(Model model, @PathVariable String resourceId) {
-       
-        List<ResourceWaste> waste = this.resourceWasteRepository.findByResourceIdGroupByDate(resourceId);
+	    LocalDate s = LocalDate.now();
+	    LocalDate start = s.minusWeeks(2);
+	    LocalDate end = s.plusDays(1);
+	    
+        List<ResourceWaste> waste = this.resourceWasteRepository.findByResourceIdAndDate(resourceId, (int)start.atStartOfDay().toEpochSecond(ZoneOffset.UTC), (int) end.atStartOfDay().toEpochSecond(ZoneOffset.UTC));
 
         model.addAttribute("waste", waste);
         model.addAttribute("resourceId", resourceId);
@@ -46,7 +51,10 @@ public class GraphController {
 
    @GetMapping("/graph_of_app/{appName}")
    public String getAppGraph1(Model model, @PathVariable String appName) {
-	   List<WasteData> waste = this.resourceWasteRepository.findByAppName(appName);
+	   LocalDate s = LocalDate.now();
+	   LocalDate start = s.minusWeeks(2);
+	   LocalDate end = s.plusDays(1);
+	   List<WasteData> waste = this.resourceWasteRepository.findByAppNameBetweenDates(appName, (int) start.atStartOfDay().toEpochSecond(ZoneOffset.UTC), (int) end.atStartOfDay().toEpochSecond(ZoneOffset.UTC));
 	   
 	   model.addAttribute("waste", waste);
 	   model.addAttribute("appName", appName);
@@ -55,7 +63,10 @@ public class GraphController {
    
    @GetMapping("/graph_of_dept/{dept}")
    public String getDeptGraph(Model model, @PathVariable String dept) {
-	   List<WasteData> waste = this.resourceWasteRepository.findByDepartment(dept);
+	   LocalDate s = LocalDate.now();
+	   LocalDate start = s.minusWeeks(2);
+	   LocalDate end = s.plusDays(1);
+	   List<WasteData> waste = this.resourceWasteRepository.findByDepartmentBetweenDates(dept, (int) start.atStartOfDay().toEpochSecond(ZoneOffset.UTC), (int) end.atStartOfDay().toEpochSecond(ZoneOffset.UTC));
 	   
 	   model.addAttribute("waste", waste);
 	   model.addAttribute("dept", dept);
@@ -64,7 +75,11 @@ public class GraphController {
    
    @GetMapping("/graph_of_owner/{owner}")
    public String getOwnerGraph(Model model, @PathVariable String owner) {
-	   List<WasteData> waste = this.resourceWasteRepository.findByOwner(owner);
+	   LocalDate s = LocalDate.now();
+	   LocalDate start = s.minusWeeks(2);
+	   LocalDate end = s.plusDays(1);
+	   
+	   List<WasteData> waste = this.resourceWasteRepository.findByOwnerBetweenDates(owner, (int) start.atStartOfDay().toEpochSecond(ZoneOffset.UTC), (int) end.atStartOfDay().toEpochSecond(ZoneOffset.UTC));
 	   
 	   model.addAttribute("waste", waste);
 	   model.addAttribute("owner", owner);
