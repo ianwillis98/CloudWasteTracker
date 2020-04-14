@@ -144,7 +144,7 @@
         	  data: {
         	    labels: xlabels,
         	    datasets: [{
-        	      label: 'Wasted Spend ($)',
+        	      label: 'Wasted EC2 Spend ($)',
         	      yAxisID: 'yAmount',
         	      data: yAmount,
         	      order: 2,
@@ -156,20 +156,20 @@
                   ,
                   borderWidth: 1
         	    }, {
-        	      label: 'Wasted Spend (%)',
+        	      label: 'Wasted EC2 Spend (%)',
         	      yAxisID: 'yPercent',
         	      order: 3,
         	      data: yPercent,
         	      backgroundColor: 
-                      'rgba(255, 255, 255, 0.0)'
+                      'rgba(44, 130, 201, 0.2)'
                   ,
                   borderColor: 
-                      'rgba(0, 0, 0, 1)'
+                      'rgba(44, 130, 201, 1)'
                   ,
                   borderWidth: 1
         	    }, 
         	    {
-          	      label: 'Total Spend ($)',
+          	      label: 'Total EC2 Spend ($)',
           	      yAxisID: 'yTotal',
           	      order: 1,
           	      data: yTotal,
