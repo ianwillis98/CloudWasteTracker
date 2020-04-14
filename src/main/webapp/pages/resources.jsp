@@ -37,17 +37,17 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Id</th>
-            <th scope="col">applicationId</th>
-            <th scope="col">applicationName</th>
+            <th scope="col">Application Id</th>
+            <th scope="col">Application Name</th>
 <%--            <th scope="col">applicationOwner</th>--%>
-            <th scope="col">accountId</th>
-            <th scope="col">accountName</th>
-            <th scope="col">department</th>
-            <th scope="col">resourceName</th>
-            <th scope="col">resourceOwner</th>
-            <th scope="col">itemDescription</th>
-            <th scope="col">disbursementCode</th>
-            <th scope="col">environment</th>
+            <th scope="col">Account Id</th>
+            <th scope="col">Account Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Resource Name</th>
+            <th scope="col">Resource Owner</th>
+            <th scope="col">Item Description</th>
+            <th scope="col">Disbursement Code</th>
+            <th scope="col">Environment</th>
         </tr>
         </thead>
         <tbody>
