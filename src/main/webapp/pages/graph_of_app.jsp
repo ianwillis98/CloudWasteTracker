@@ -161,7 +161,7 @@
         	      order: 3,
         	      data: yPercent,
         	      backgroundColor: 
-                      'rgba(44, 130, 201, 0.2)'
+                      'rgba(255, 255, 255, 0)'
                   ,
                   borderColor: 
                       'rgba(44, 130, 201, 1)'
