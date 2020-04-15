@@ -67,7 +67,8 @@
 		            </div>
 		        </form>
 	        </div>
-	         <input style="font-size:160%;color:white;text-align:center;background-color:black;" type ="submit" name="submitbutton" onclick = "myFunction()" value="Apply Selected Date Range"/>
+			<button type="button" class="btn btn-primary" onClick="myFunction()">Apply Selected Date Range</button>
+		<%--	         <input style="font-size:160%;color:white;text-align:center;background-color:black;" type ="submit" name="submitbutton" onclick = "myFunction()" value="Apply Selected Date Range"/>--%>
 	    </div>
 	</div>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
@@ -250,7 +251,7 @@
 <div>
 <p>
 <center>
-<button style="font-size:160%;color:white;text-align:center;background-color:black;" onclick="document.location = '/resources'">Return to List of Resources ${resourceId}</button>
+<button type="button" class="btn btn-primary" onclick="document.location = '/resources'">Return to List of Resources ${resourceId}</button>
 </center>
 </p>
 </div>
