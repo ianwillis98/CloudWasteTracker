@@ -34,7 +34,11 @@ public class ResourcesController {
 //            resource.setResourceOwner(resource.getResourceOwner().substring(0, 3) + "...");
 //            resource.setDisbursementCode(resource.getDisbursementCode().substring(0, 3) + "...");
 //        }
+        List<ResourceWaste> wasteByPercent = this.resourceWasteRepository.findMostRecentWasteByIdPercent();
+        List<ResourceWaste> wasteByAmount = this.resourceWasteRepository.findMostRecentWasteByIdAmount();
         model.addAttribute("resources", resources);
+        model.addAttribute("wasteByPercent", wasteByPercent);
+        model.addAttribute("wasteByAmount", wasteByAmount);
         return "resources";
     }
 
