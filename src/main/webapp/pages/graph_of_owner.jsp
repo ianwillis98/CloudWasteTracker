@@ -133,8 +133,8 @@
         var t = null;
         <c:forEach var="data" items="${waste}" varStatus="loop">
     	yPercent[${loop.index}] = ${data.getWastePercent()};
-        yAmount[${loop.index}] =  ${Math.floor(data.getTotalWaste()*100)/100};
-        yTotal[${loop.index}] = ${Math.floor(data.getTotalSpent()*100)/100};
+        yAmount[${loop.index}] =  ${Math.floor(data.getTotalWaste()*10)/100};
+        yTotal[${loop.index}] = ${Math.floor(data.getTotalSpent()*10)/100};
      
         x[${loop.index}] =  "${fn:substring(data.getDate(), 5, 7)}" + "/" + "${fn:substring(data.getDate(), 8, 10)}" + "/" + "${fn:substring(data.getDate(), 2, 4)}";
      </c:forEach>

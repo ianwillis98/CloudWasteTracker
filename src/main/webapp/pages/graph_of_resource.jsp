@@ -134,8 +134,8 @@
         var t = null;
         <c:forEach var="data" items="${waste}" varStatus="loop">
         	yPercent[${loop.index}] = ${data.recommendationSavingsPct};
-            yAmount[${loop.index}] =  ${data.recommendationSavings};
-            yTotal[${loop.index}] = ${data.totalSpend};
+            yAmount[${loop.index}] =  ${Math.floor(data.recommendationSavings*10)/100};
+            yTotal[${loop.index}] = ${Math.floor(data.totalSpend*10)/100};
          
             x[${loop.index}] =  "${fn:substring(data.createdAt, 5, 7)}" + "/" + "${fn:substring(data.createdAt, 8, 10)}" + "/" + "${fn:substring(data.createdAt, 2, 4)}";
          </c:forEach>
