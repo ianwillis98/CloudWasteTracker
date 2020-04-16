@@ -39,5 +39,12 @@ public interface ResourceWasteRepository extends JpaRepository<ResourceWaste, Lo
     @Query(value = "select created_at as 'date', sum(total_spend) as 'totalSpent', sum(recommendation_savings) as 'totalWaste' from resource_waste where resource_id in "
             + "(SELECT resource_id FROM resource where resource_owner = :owner) group by date(created_at) order by created_at ASC;", nativeQuery = true)
     public List<WasteData> findByOwner(@Param("owner") String owner);
+   
+    @Query(value = "select * from resource_waste r1 where r1.created_at = (select max(created_at) from resource_waste r2 where r2.resource_id = r1.resource_id) order by r1.recommendation_savings desc;", nativeQuery = true)
+    public List<ResourceWaste> findMostRecentWasteByIdAmount();
+    
+    @Query(value = "select * from resource_waste r1 where r1.created_at = (select max(created_at) from resource_waste r2 where r2.resource_id = r1.resource_id) order by r1.recommendation_savings_pct desc;", nativeQuery = true)
+    public List<ResourceWaste> findMostRecentWasteByIdPercent();
+    
 
 }
