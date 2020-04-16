@@ -46,7 +46,7 @@
 	        	<form>
 		            <div class="form-group">
 		                <div class='input-group date' id='datepicker'>
-		                    <input type='text' class="form-control" />
+							<input type='text' class="form-control" placeholder="Start Date" />
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
@@ -58,7 +58,7 @@
 	        	<form>
 		            <div class="form-group">
 		                <div class='input-group date' id='datepicker2'>
-		                    <input type='text' class="form-control" />
+							<input type='text' class="form-control" placeholder="End Date" />
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
