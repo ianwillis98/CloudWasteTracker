@@ -41,22 +41,22 @@
             <th scope="col">#</th>
             <th scope="col">ID</th>
             <th scope="col">Date</th>
-            <th scope="col">Total Spend($)</th>
-            <th scope="col">Hours Running</th>
-            <th scope="col">Idle(%)</th>
-            <th scope="col" style="background-color:deepskyblue">Recommended Action</th>
-            <th scope="col" style="background-color:deepskyblue">Recommended Savings($)</th>
-            <th scope="col" style="background-color:deepskyblue">Recommended Savings(%)</th>
+            <th scope="col" style="background-color:red">Total Spend($)</th>
+            <th scope="col" style="background-color:red">Hours Running</th>
+            <th scope="col" style="background-color:red">Idle(%)</th>
+            <th scope="col" style="background-color:lightgreen">Recommended Action</th>
+            <th scope="col" style="background-color:lightgreen">Recommended Savings($)</th>
+            <th scope="col" style="background-color:lightgreen">Recommended Savings(%)</th>
             <th scope="col">Node Type</th>
-            <th scope="col" style="background-color:deepskyblue">Recommended Node Type</th>
+            <th scope="col" style="background-color:lightgreen">Recommended Node Type</th>
             <th scope="col">Unit Price($)</th>
-            <th scope="col" style="background-color:deepskyblue">Recommended Unit Price($)</th>
+            <th scope="col" style="background-color:lightgreen">Recommended Unit Price($)</th>
             <th scope="col">CPU Capacity</th>
-            <th scope="col" style="background-color:deepskyblue">Recommended CPU Capacity</th>
+            <th scope="col" style="background-color:lightgreen">Recommended CPU Capacity</th>
             <th scope="col">Memory Capacity</th>
-            <th scope="col" style="background-color:deepskyblue">Recommended Memory Capacity</th>
+            <th scope="col" style="background-color:lightgreen">Recommended Memory Capacity</th>
             <th scope="col">Network Capacity</th>
-            <th scope="col" style="background-color:deepskyblue">Recommended Network Capacity</th>
+            <th scope="col" style="background-color:lightgreen">Recommended Network Capacity</th>
             <th scope="col">Risk of Recommendation</th>
             <th scope="col">Power On At</th>
             <th scope="col">Shut Down At</th>
@@ -68,22 +68,22 @@
                 <td scope="row">${loop.index + 1}</td>
                 <td>${data.id}</td>
                 <td>${fn:substring(data.createdAt, 5, 7)}/${fn:substring(data.createdAt, 8, 10)}/${fn:substring(data.createdAt, 2, 4)}</td>
-                <td>${Math.floor(data.totalSpend*10)/100}</td>
-                <td>${data.hoursRunning}</td>
-                <td>${data.idle}</td>
-                <td style="border:4px solid #92a8d1">${data.recommendationAction}</td>
-                <td style="border:4px solid #92a8d1">${Math.floor(data.recommendationSavings*10)/100}</td>
-                <td style="border:4px solid #92a8d1">${data.recommendationSavingsPct}</td>
+                <td style="border:2px solid red">${Math.floor(data.totalSpend*10)/100}</td>
+                <td style="border:2px solid red">${data.hoursRunning}</td>
+                <td style="border:2px solid red">${data.idle}</td>
+                <td style="border:2px solid lightgreen">${data.recommendationAction}</td>
+                <td style="border:2px solid lightgreen">${Math.floor(data.recommendationSavings*10)/100}</td>
+                <td style="border:2px solid lightgreen">${data.recommendationSavingsPct}</td>
                 <td>${data.nodeType}</td>
-                <td style="border:4px solid #92a8d1">${data.recommendationNodeType}</td>
+                <td style="border:2px solid lightgreen">${data.recommendationNodeType}</td>
                 <td>${data.unitPrice}</td>
-                <td style="border:4px solid #92a8d1">${data.recommendationUnitPrice}</td>
+                <td style="border:2px solid lightgreen">${data.recommendationUnitPrice}</td>
                 <td>${data.cpuCapacity}</td>
-                <td style="border:4px solid #92a8d1">${data.recommendationCpuCapacity}</td>
+                <td style="border:2px solid lightgreen">${data.recommendationCpuCapacity}</td>
                 <td>${data.memoryCapacity}</td>
-                <td style="border:4px solid #92a8d1">${data.recommendationMemoryCapacity}</td>
+                <td style="border:2px solid lightgreen">${data.recommendationMemoryCapacity}</td>
                 <td>${data.networkCapacity}</td>
-                <td style="border:4px solid #92a8d1">${data.recommendationNetworkCapacity}</td>
+                <td style="border:2px solid lightgreen">${data.recommendationNetworkCapacity}</td>
                 <td>${data.recommendationRisk}</td>
                 <td>${data.powerOnAt}</td>
                 <td>${data.shutdownAt}</td>
@@ -100,7 +100,15 @@
 <div>
 <p>
 <center>
-<button style="font-size:100%;color:white;text-align:center;background-color:black;" onclick="document.location = '/graph_of_resource/${resourceId}'">Return to graph for Resource ${resourceId}</button>
+<button type="button" class="btn btn-primary" onclick="document.location = '/graph_of_resource/${resourceId}'">Return to graph for Resource ${resourceId}</button>
+</center>
+</p>
+</div>
+
+<div>
+<p>
+<center>
+<button type="button" class="btn btn-primary" onclick="document.location = '/resources'">Return to List of Resources${list}</button>
 </center>
 </p>
 </div>
