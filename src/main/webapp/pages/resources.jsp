@@ -36,7 +36,9 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Id</th>
+            <th scope="col">Resource Id</th>
+            <th scope="col">EC2 Wasted Spend($)</th>
+            <th scope="col">EC2 Wasted Spend(%)</th>
             <th scope="col">Application Id</th>
             <th scope="col">Application Name</th>
 <%--            <th scope="col">applicationOwner</th>--%>
@@ -51,21 +53,23 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="resource" items="${resources}" varStatus="loop">
+                <c:forEach var="resource" items="${wasteByPercent}" varStatus="loop">
             <tr>
                 <td scope="row">${loop.index + 1}</td>
-                <td><a href="/graph_of_resource/${resource.resourceId}">${resource.resourceId}</a></td>
-                <td>${resource.applicationId}</td>
-                <td><a href="/graph_of_app/${resource.applicationName}">${resource.applicationName}</a></td>
+                <td><a href="/graph_of_resource/${resource.resource.resourceId}">${resource.resource.resourceId}</a></td>
+                <td>${Math.floor(wasteByPercent[loop.index].getRecommendationSavings()*10)/100}</td>
+                <td>${wasteByPercent[loop.index].getRecommendationSavingsPct()}</td>
+                <td>${resource.resource.applicationId}</td>
+                <td><a href="/graph_of_app/${resource.resource.applicationName}">${resource.resource.applicationName}</a></td>
 <%--                <td>${resource.applicationOwner}</td>--%>
-                <td>${resource.accountId}</td>
-                <td>${resource.accountName}</td>
-                <td><a href="/graph_of_dept/${resource.department}">${resource.department}</a></td>
-                <td>${resource.resourceName}</td>
-                <td><a href="/graph_of_owner/${resource.resourceOwner}">${resource.resourceOwner}</a></td>
-                <td>${resource.itemDescription}</td>
-                <td>${resource.disbursementCode}</td>
-                <td>${resource.environment}</td>
+                <td>${resource.resource.accountId}</td>
+                <td>${resource.resource.accountName}</td>
+                <td><a href="/graph_of_dept/${resource.resource.department}">${resource.resource.department}</a></td>
+                <td>${resource.resource.resourceName}</td>
+                <td><a href="/graph_of_owner/${resource.resource.resourceOwner}">${resource.resource.resourceOwner}</a></td>
+                <td>${resource.resource.itemDescription}</td>
+                <td>${resource.resource.disbursementCode}</td>
+                <td>${resource.resource.environment}</td>
             </tr>
         </c:forEach>
         </tbody>
