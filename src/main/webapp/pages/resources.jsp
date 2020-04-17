@@ -26,7 +26,7 @@
             <a class="nav-item nav-link" href="/home">Home</a>
             <a class="nav-item nav-link" href="/vendors">Vendors</a>
             <a class="nav-item nav-link active" href="#">Resources <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/resources-data">Resources Data</a>
+           
         </div>
     </div>
 </nav>
