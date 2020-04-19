@@ -44,7 +44,7 @@ See the [frontend wiki page](link here) for a more in depth explanation
 This project is no longer maintained by the original Jr. Cloud Optinauts group as of the end
 of the Spring 2020 semester. All group members are graduating and the project was turned over to
 the The Ohio State University and Nationwide. For more information, contact me (Ian Willis) personally
-at [ianwillis98@gmail.com](mailto:ianwillis98@gmail.com?subject=[GitHub]%20Cloud%20Waste%20Tracker)
+at [ianwillis98@gmail.com](mailto:ianwillis98@gmail.com?subject=[GitHub]%20Cloud%20Waste%20Tracker%20Support)
 
 ## Roadmap
 
