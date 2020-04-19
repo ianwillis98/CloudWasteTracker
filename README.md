@@ -35,7 +35,9 @@ See the [Overview Wiki Page](link here)
 ## Installation
 
 See the [Project Setup Wiki Page](https://github.com/ianwillis98/CloudWasteTracker/wiki/Project-Setup)
+
 See the [Database Setup Wiki Page](https://github.com/ianwillis98/CloudWasteTracker/wiki/Database-Installation)
+
 See the [Frontend Setup Wiki Page](https://github.com/ianwillis98/CloudWasteTracker/wiki/Frontend-Setup)
 
 ## Usage
