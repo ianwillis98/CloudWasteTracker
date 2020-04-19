@@ -58,8 +58,8 @@
         <tbody>
                 <c:forEach var="resource" items="${wasteByPercent}" varStatus="loop">
             <tr>
-                <td>${wasteByPercent[loop.index].getRecommendationSavingsPct()}%</td>
-                <td>$${Math.floor(wasteByPercent[loop.index].getRecommendationSavings()*10)/100}</td>
+                <td>${wasteByPercent[loop.index].getRecommendationSavingsPct()}</td>
+                <td>${Math.floor(wasteByPercent[loop.index].getRecommendationSavings()*10)/100}</td>
                 <td><a href="/graph_of_resource/${resource.resource.resourceId}">${resource.resource.resourceId}</a></td>
                 <td><a href="/graph_of_app/${resource.resource.applicationName}">${resource.resource.applicationName}</a></td>
                 <td><a href="/graph_of_dept/${resource.resource.department}">${resource.resource.department}</a></td>
