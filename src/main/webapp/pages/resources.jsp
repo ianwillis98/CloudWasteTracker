@@ -39,17 +39,17 @@
     <table data-toggle="table" data-search="true" data-pagination="true" class="table table-striped table-hover table-sm table-responsive" style="max-width: 100%">
         <thead>
         <tr>
-            <th data-sortable="true" scope="col">EC2 Wasted Spend(%)</th>
-            <th data-sortable="true" scope="col">EC2 Wasted Spend($)</th>
+            <th data-sortable="true" scope="col">Wasted EC2 Spend(%)</th>
+            <th data-sortable="true" scope="col">Wasted EC2 Spend($)</th>
             <th data-sortable="true" scope="col">Resource Id</th>
-            <th data-sortable="true" scope="col">Application Id</th>
             <th data-sortable="true" scope="col">Application Name</th>
 <%--            <th scope="col">applicationOwner</th>--%>
+            <th data-sortable="true" scope="col">Department</th>
+            <th data-sortable="true" scope="col">Resource Owner</th>
+            <th data-sortable="true" scope="col">Resource Name</th>
+            <th data-sortable="true" scope="col">Application Id</th>
             <th data-sortable="true" scope="col">Account Id</th>
             <th data-sortable="true" scope="col">Account Name</th>
-            <th data-sortable="true" scope="col">Department</th>
-            <th data-sortable="true" scope="col">Resource Name</th>
-            <th data-sortable="true" scope="col">Resource Owner</th>
             <th data-sortable="true" scope="col">Item Description</th>
             <th data-sortable="true" scope="col">Disbursement Code</th>
             <th data-sortable="true" scope="col">Environment</th>
@@ -58,17 +58,17 @@
         <tbody>
                 <c:forEach var="resource" items="${wasteByPercent}" varStatus="loop">
             <tr>
-                <td>${wasteByPercent[loop.index].getRecommendationSavingsPct()}</td>
-                <td>${Math.floor(wasteByPercent[loop.index].getRecommendationSavings()*10)/100}</td>
+                <td>${wasteByPercent[loop.index].getRecommendationSavingsPct()}%</td>
+                <td>$${Math.floor(wasteByPercent[loop.index].getRecommendationSavings()*10)/100}</td>
                 <td><a href="/graph_of_resource/${resource.resource.resourceId}">${resource.resource.resourceId}</a></td>
-                <td>${resource.resource.applicationId}</td>
                 <td><a href="/graph_of_app/${resource.resource.applicationName}">${resource.resource.applicationName}</a></td>
-<%--                <td>${resource.applicationOwner}</td>--%>
-                <td>${resource.resource.accountId}</td>
-                <td>${resource.resource.accountName}</td>
                 <td><a href="/graph_of_dept/${resource.resource.department}">${resource.resource.department}</a></td>
-                <td>${resource.resource.resourceName}</td>
                 <td><a href="/graph_of_owner/${resource.resource.resourceOwner}">${resource.resource.resourceOwner}</a></td>
+                <td>${resource.resource.resourceName}</td>  
+<%--                <td>${resource.applicationOwner}</td>--%>
+                <td>${resource.resource.applicationId}</td>
+                <td>${resource.resource.accountId}</td>
+                <td>${resource.resource.accountName}</td>                
                 <td>${resource.resource.itemDescription}</td>
                 <td>${resource.resource.disbursementCode}</td>
                 <td>${resource.resource.environment}</td>
