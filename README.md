@@ -17,3 +17,11 @@ Cloud Waste Tracker is a Capstone Project created to help analyze wasted spendin
 - Tim Regrut
 - Kacey Coffey
 - Tony (Zijian) Gao
+
+## Overview
+
+See the overview [wiki page](link here)
+
+## Installation
+
+See the installation [wiki page](link here)
