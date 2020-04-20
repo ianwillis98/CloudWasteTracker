@@ -17,7 +17,7 @@ This project is no longer being worked.
 - Ian Willis
 - Tim Regrut
 - Kacey Coffey
-- Tony (Zijian) Gao
+- Tony Gao
 
 **Sponsor Contacts From Nationwide**
 - Joseph (Joe) Daly
@@ -77,7 +77,7 @@ This project could not have been completed without them.
 - Resources Page
 - Graph Scales and Styling
 
-**Tony (Zijian) Gao**: Frontend / JavaScript Developer
+**Tony Gao**: Frontend / JavaScript Developer
 - Frontend Setup
 - Backend Web Controllers
 - Graph Setup and Date Selector
