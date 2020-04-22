@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ResourceEndpoints {
 
@@ -16,6 +18,11 @@ public class ResourceEndpoints {
     public ResourceEndpoints(CloudabilityClient client, ResourceRepository resourcesRepository) {
         this.client = client;
         this.resourcesRepository = resourcesRepository;
+    }
+
+    @GetMapping("/api/resource")
+    public List<Resource> fetchResources() {
+        return resourcesRepository.findAll();
     }
 
     @GetMapping("/api/resource/{resourceId}")
