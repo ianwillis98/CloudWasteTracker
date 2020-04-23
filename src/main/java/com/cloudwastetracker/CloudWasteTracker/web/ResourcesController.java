@@ -14,7 +14,6 @@ import java.util.List;
 
 @Controller
 public class ResourcesController {
-	//repositories
     private ResourceRepository resourceRepository;
     private ResourceWasteRepository resourceWasteRepository;
 
