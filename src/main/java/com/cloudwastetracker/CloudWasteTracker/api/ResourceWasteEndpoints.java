@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ResourceWasteController {
+public class ResourceWasteEndpoints {
 
     private CloudabilityClient client;
     private ResourceWasteRepository resourceWasteRepository;
 
-    public ResourceWasteController(CloudabilityClient client, ResourceWasteRepository resourceWasteRepository) {
+    public ResourceWasteEndpoints(CloudabilityClient client, ResourceWasteRepository resourceWasteRepository) {
         this.client = client;
         this.resourceWasteRepository = resourceWasteRepository;
     }
