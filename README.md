@@ -28,10 +28,6 @@ This project is no longer being worked.
 
 See the [Background Wiki Page](https://github.com/ianwillis98/CloudWasteTracker/wiki/Background)
 
-## Overview
-
-See the [Overview Wiki Page](link here)
-
 ## Installation
 
 See the [Installation Wiki Page](https://github.com/ianwillis98/CloudWasteTracker/wiki/Installation)
@@ -39,6 +35,10 @@ See the [Installation Wiki Page](https://github.com/ianwillis98/CloudWasteTracke
 ## Usage
 
 See the [Usage Wiki Page](https://github.com/ianwillis98/CloudWasteTracker/wiki/Usage)
+
+## DevNotes
+
+See the [DevNotes Wiki Page](https://github.com/ianwillis98/CloudWasteTracker/wiki/DevNotes)
 
 ## Support
 
@@ -49,8 +49,7 @@ at [ianwillis98@gmail.com](mailto:ianwillis98@gmail.com?subject=[GitHub]%20Cloud
 
 ## Roadmap
 
-This section will include everything that the group wanted to complete, or was in the process of completing,
-but didn't have enough time to complete.
+See the [Roadmap Wiki Page](https://github.com/ianwillis98/CloudWasteTracker/wiki/Roadmap)
 
 ## Contributing
 
