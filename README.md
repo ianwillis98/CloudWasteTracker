@@ -32,6 +32,8 @@ See the [Background Wiki Page](https://github.com/ianwillis98/CloudWasteTracker/
 
 See the [Installation Wiki Page](https://github.com/ianwillis98/CloudWasteTracker/wiki/Installation)
 
+Fill out the REMOVED values in [application.properites](src/main/resources/application.properties)
+
 ## Usage
 
 See the [Usage Wiki Page](https://github.com/ianwillis98/CloudWasteTracker/wiki/Usage)
